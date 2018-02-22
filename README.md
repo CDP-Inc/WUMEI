@@ -13,7 +13,7 @@ Automated CI builds are setup for the master branch:
 
 [<img src="https://cdpinc.visualstudio.com/_apis/public/build/definitions/b60ff22e-6fe0-469e-b948-1a18c5a2ae5d/3/badge"/>](https://cdpinc.visualstudio.com/WUMEI/_build/index?definitionId=3)
 
-Automated builds include execition of tests found in the solution. In addition to automated CI builds, automated CD releases are also setup as a trigger from CI build completion. Any commit that results in a successful build was also result in a release deployment.
+Automated builds include execution of tests found in the solution. In addition to automated CI builds, automated CD releases are also setup as a trigger from CI build completion. Any commit that results in a successful build was also result in a release deployment.
 
 # References
 * [Live API Documentation](https://ebtkickoff.cdpehs.com/WUMEI/swagger/)
