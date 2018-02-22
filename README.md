@@ -1,20 +1,17 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+CDP is working to help draft the final Technical Specification for the WIC Universal MIS-EBT Interface.
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+The following prerequisites are required:
+* Visual Studio 2017
+* .NET Core 2.0
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+To get started, clone this repository to your machine and open with Visual Studio.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Build, Test, and Release
+Automated CI builds are setup:
+[<img src="https://cdpinc.visualstudio.com/_apis/public/build/definitions/b60ff22e-6fe0-469e-b948-1a18c5a2ae5d/3/badge"/>](https://cdpinc.visualstudio.com/WUMEI/_build/index?definitionId=3)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# References
+* [Live API Documentation](https://ebtkickoff.cdpehs.com/WUMEI/swagger/)
+* [WIC EBT Operating Rules & Technical Implementation Guide](https://www.fns.usda.gov/wic/wic-ebt-operating-rules-technical-implementation-guide)
