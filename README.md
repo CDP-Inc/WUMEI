@@ -1,5 +1,5 @@
 # Introduction 
-CDP is working to help draft the final Technical Specification for the WIC Universal MIS-EBT Interface.
+CDP is working to help draft the initial Technical Specification for the latest 2018 version of the WIC Universal MIS-EBT Interface. To assist with this, a reference ASP.NET Core Web API has been built. This includes automatic generation of API documentation using Swagger.
 
 # Getting Started
 The following prerequisites are required:
