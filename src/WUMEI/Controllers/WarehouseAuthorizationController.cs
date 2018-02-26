@@ -15,7 +15,9 @@ namespace WUMEI.Controllers
     public class WarehouseAuthorizationController : Controller
     {
         /// <summary>
-        /// 
+        /// The Request Warehouse Authorization function uses a message based interface to allow the MIS 
+        /// to request that the WIC EBT System generate an Authorization code that must be presented in 
+        /// the redemption request at the time of fulfillment.
         /// </summary>
         /// <param name="auth"></param>
         /// <returns></returns>
@@ -34,8 +36,9 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// Allows the MIS to request that the WIC EBT System void a given authorization
-        /// that has previously been requested.
+        /// The Void Warehouse Authorization function uses a message based interface to allow the MIS 
+        /// to request that the WIC EBT System void a given authorization that has previously been 
+        /// requested.
         /// </summary>
         /// <param name="auth"></param>
         /// <returns></returns>
@@ -54,7 +57,8 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// Optional function that gets a list of matching warehouse authorizations.
+        /// The Get Warehouse Authorizations function is an optional function that uses a message based 
+        /// system interface to get a list of matching warehouse authorizations.
         /// </summary>
         /// <remarks>
         /// Requires at least one primary filter to be provided to return authorizations
@@ -77,7 +81,8 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// Gets an authorization code from a previous approved warehouse authorization.
+        /// The Get Warehouse Authorization Code function is an optional function that uses a message based 
+        /// system interface to get an authorization code from a previously approved warehouse authorization.
         /// </summary>
         /// <param name="auth"></param>
         /// <returns></returns>
