@@ -3,10 +3,33 @@ CDP is working to help draft the initial Technical Specification for the latest 
 
 # Getting Started
 The following prerequisites are required:
-* Visual Studio 2017
+* Visual Studio 2017 (or Visual Studio Code)
 * .NET Core 2.0
 
-To get started, clone this repository to your machine and open with Visual Studio.
+To get started, clone this repository to your machine and open with Visual Studio. To debug locally, be sure to update your local src\WUMEI\Properties\launchSettings.json file like so to enable the Swagger documentation site to display at runtime:
+
+```
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:24041/WUMEI/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
+```
 
 # Build, Test, and Release
 Automated CI builds are setup for the master branch:
