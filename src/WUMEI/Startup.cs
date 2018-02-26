@@ -2,83 +2,51 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
-using System;
-//using System.Collections.Generic;
-using System.IO;
 
 namespace WUMEI
 {
     /// <summary>
-    /// 
+    /// Class that configures services and the application's request pipeline.
     /// </summary>
+    /// <remarks>https://docs.microsoft.com/en-us/aspnet/core/fundamentals/startup</remarks>
     public class Startup
     {
         /// <summary>
-        /// 
+        /// Gets the key/value application configuration properties.
         /// </summary>
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// 
+        /// Constructor for the class.
         /// </summary>
-        /// <param name="configuration"></param>
+        /// <param name="configuration">A set of key/value application configuration properties.</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        
+
         /// <summary>
-        /// 
+        /// Use this method to add services to the container.
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v2018", new Info
-                {
-                    Title = "WIC Universal MIS-EBT Interface Technical Specification",
-                    Description = "Initial draft of API technical specification for the latest version of the WUMEI.",
-                    Version = "v2018"
-                });
-
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "WUMEI.xml"));
-
-                //c.AddSecurityDefinition("oauth2", new OAuth2Scheme
-                //{
-                //    Type = "oauth2",
-                //    Flow = "implicit",
-                //    AuthorizationUrl = "http://petstore.swagger.io/oauth/dialog",
-                //    Scopes = new Dictionary<string, string>
-                //    {
-                //        { "readAccess", "Access read operations" },
-                //        { "writeAccess", "Access write operations" }
-                //    }
-                //});
-
-                //c.OperationFilter<SecurityRequirementsOperationFilter>();
-            });
+            services.AddSwaggerDocumentation();
         }
-        
+
         /// <summary>
-        /// 
+        /// Use this method to configure the HTTP request pipeline.
         /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
+        /// <param name="app">Defines a class that provides the mechanisms to configure an application's request pipeline.</param>
+        /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/WUMEI/swagger/v2018/swagger.json", "WUMEI v2018");
-                //c.ConfigureOAuth2("swagger-ui", "swagger-ui-secret", "swagger-ui-realm", "Swagger UI");
-            });
+            app.UseSwaggerDocumentation();
             app.UseMvc();
         }
     }
