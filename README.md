@@ -1,5 +1,5 @@
 # Introduction 
-CDP is working to help draft the initial Technical Specification for the latest 2018 version of the WIC Universal MIS-EBT Interface (WUMEI). To assist with this, a reference ASP<span>.NET</span> Core Web API has been built. This includes automatic generation of API documentation using Swagger. This API documentation includes all methods and files defined within the WUMEI along with full model definitions build from classes in code for each entry.
+CDP is working to help draft the initial Technical Specification for the latest 2018 version of the WIC Universal MIS-EBT Interface (WUMEI). To assist with this, a reference ASP<span>.NET</span> Core Web API has been built. This includes automatic generation of API documentation using Swagger. This API documentation includes all methods and files defined within the WUMEI along with full model definitions built from classes in code for each entry.
 
 # Getting Started
 The following prerequisites are required:
