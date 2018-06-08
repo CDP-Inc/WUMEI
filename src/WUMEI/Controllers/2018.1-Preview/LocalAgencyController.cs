@@ -6,7 +6,8 @@ namespace WUMEI.Controllers
     /// <summary>
     /// The Local Agency Maintenance functional area comprises functions for creating and updating local agency information needed by the WIC EBT System for reporting purposes.
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class LocalAgencyController : Controller
     {
         /// <summary>

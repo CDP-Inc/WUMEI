@@ -7,7 +7,8 @@ namespace WUMEI.Controllers
     /// The WIC EBA Benefit Maintenance functional area comprises functions for maintaining and querying
     /// benefit information associated with the EBAs in the WIC EBT System.
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class WicEbaBenefitController : Controller
     {
         /// <summary>

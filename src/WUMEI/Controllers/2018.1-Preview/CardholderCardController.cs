@@ -8,7 +8,8 @@ namespace WUMEI.Controllers
     /// and their cards in the WIC EBT System. 
     /// WIC Cardholders and cards are required to access WIC EBT benefits associated with an EBA in the WIC EBT System.
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class CardholderCardController : Controller
     {
         /// <summary>

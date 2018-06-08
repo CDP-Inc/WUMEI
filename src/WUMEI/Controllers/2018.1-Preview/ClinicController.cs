@@ -6,7 +6,8 @@ namespace WUMEI.Controllers
     /// <summary>
     /// The Clinic Maintenance functional area comprises functions for creating and updating clinic information needed by the WIC EBT System.
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class ClinicController : Controller
     {
         /// <summary>

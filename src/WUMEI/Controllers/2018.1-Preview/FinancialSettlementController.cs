@@ -7,7 +7,8 @@ namespace WUMEI.Controllers
     /// The Financial Settlement functional area comprises functions for effecting financial transactions from
     /// the WIC EBT system to the WIC Vendor
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class FinancialSettlementController : Controller
     {
         /// <summary>

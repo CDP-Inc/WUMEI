@@ -7,7 +7,8 @@ namespace WUMEI.Controllers
     /// The WIC Vendor Maintenance functional area provides functions for maintaining WIC Vendor information, 
     /// including banking information that is needed by the WIC EBT System.
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class WicVendorController : Controller
     {
         /// <summary>

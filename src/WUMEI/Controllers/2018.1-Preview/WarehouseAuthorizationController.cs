@@ -11,7 +11,8 @@ namespace WUMEI.Controllers
     /// Since the cardholder is not present when a warehouse fulfills an order, an alternative to PIN entry
     /// is required to maintain the integrity of the transaction.
     /// </remarks>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class WarehouseAuthorizationController : Controller
     {
         /// <summary>

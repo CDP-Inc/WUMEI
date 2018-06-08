@@ -8,7 +8,8 @@ namespace WUMEI.Controllers
     /// food categories and sub-categories used by the WIC State Agency, creating and maintaining the list of 
     /// UPC/PLU data for food items and creating and maintaining the NTE price for a food item.
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class WicFoodController : Controller
     {
         /// <summary>

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WUMEI.Models;
 
-
 namespace WUMEI.Controllers
 {
     /// <summary>
@@ -9,7 +8,8 @@ namespace WUMEI.Controllers
     /// and WIC EBT system and to synchronize data stored in separate locations. This may be a two-way data flow,
     /// with some transfers being initiated by the WIC MIS and others by the WIC EBT system.
     /// </summary>
-    [Route("wumei/[controller]/[action]")]
+    [ApiVersion("2018.1-Preview")]
+    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
     public class BatchFileController : Controller
     {
         /// <summary>
