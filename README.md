@@ -1,12 +1,12 @@
 # Introduction 
 
-CDP is working to help draft the initial Technical Specification for the latest 2018 version of the WIC Universal MIS-EBT Interface (WUMEI). To assist with this, a reference ASP<span>.NET</span> Core Web API has been built. This includes automatic generation of API documentation using Swagger. This API documentation includes all methods and files defined within the WUMEI along with full model definitions built from classes in code for each entry.
+CDP is working to help draft the initial API for the latest 2018 version of the WIC Universal MIS-EBT Interface (WUMEI). To assist with this, a reference ASP<span>.NET</span> Core Web API has been built. This includes automatic generation of API documentation using Swagger. This API documentation includes all methods and files defined within the WUMEI along with full model definitions built from classes in code for each entry.
 
 # Getting Started
 
 The following prerequisites are required:
 * Visual Studio 2017 (or Visual Studio Code)
-* .NET Core 2.0
+* .NET Core 2.1
 
 To get started, clone this repository to your machine and open with Visual Studio. To debug locally, be sure to update your local src\WUMEI\Properties\launchSettings.json file like so to enable the Swagger documentation site to display at runtime:
 
@@ -24,7 +24,7 @@ To get started, clone this repository to your machine and open with Visual Studi
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "/swagger",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
