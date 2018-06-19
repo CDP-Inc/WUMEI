@@ -9,7 +9,7 @@ namespace WUMEI.Controllers
     /// UPC/PLU data for food items and creating and maintaining the NTE price for a food item.
     /// </summary>
     [ApiVersion("2018.1-Preview")]
-    [Route("wumei/{version:apiVersion}/[controller]/[action]")]
+    [Route("WUMEI/{version:apiVersion}/[controller]/[action]")]
     public class WicFoodController : Controller
     {
         /// <summary>
