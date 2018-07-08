@@ -15,8 +15,8 @@ namespace WUMEI.Models
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2, 
-        /// Address city, Address state and Address ZIP code where the household receives mail. 
+        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the household receives mail.
         /// </summary>
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
@@ -57,7 +57,7 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
         /// </remarks>
-        public ContactNameOp HeadOfHouseholdName { get; set; }
+        public ContactName HeadOfHouseholdName { get; set; }
 
         /// <summary>
         /// A code indicating the status of the entity indicated.

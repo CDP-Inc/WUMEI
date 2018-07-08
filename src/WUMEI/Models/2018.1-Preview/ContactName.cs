@@ -5,7 +5,7 @@ namespace WUMEI.Models
     /// <summary>
     /// Object that contains fields for Contact Names when they are required.
     /// </summary>
-    public class ContactNameRq
+    public class ContactName
     {
         /// <summary>
         /// Sub-element of name data elements identifying the first name of the person specified.

@@ -42,7 +42,7 @@ namespace WUMEI.Models
         /// <summary>
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
-        public ContactNameOp HeadOfHouseholdName { get; set; }
+        public ContactName HeadOfHouseholdName { get; set; }
 
         /// <summary>
         /// Reason for an action.

@@ -15,8 +15,8 @@ namespace WUMEI.Models
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2, 
-        /// Address city, Address state and Address ZIP code where the card holder receives mail. 
+        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the card holder receives mail.
         /// </summary>
         public MailingAddressOp CardholderMailingAddress { get; set; }
 
@@ -29,7 +29,7 @@ namespace WUMEI.Models
         public string CardholderRelationship { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required, StringLength(19)]
@@ -60,7 +60,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
         [Required]
-        public ContactNameRq CardholderName { get; set; }
+        public ContactName CardholderName { get; set; }
 
         /// <summary>
         /// Phone number for cardholder.

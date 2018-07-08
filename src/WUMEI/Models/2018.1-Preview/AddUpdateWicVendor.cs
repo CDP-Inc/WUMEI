@@ -43,8 +43,8 @@ namespace WUMEI.Models
         public string ActionCode { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2, 
-        /// Address city, Address state and Address ZIP code where the Wic Vendor receives mail. 
+        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the Wic Vendor receives mail.
         /// </summary>
         [Required]
         public MailingAddressRq WicVendorMailingAddress { get; set; }
@@ -165,7 +165,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
         [Required]
-        public ContactNameRq WicVendorContactName { get; set; }
+        public ContactName WicVendorContactName { get; set; }
 
         /// <summary>
         /// An alternate phone number of a point of contact at the WIC Vendor.

@@ -16,8 +16,8 @@ namespace WUMEI.Models
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2, 
-        /// Address city, Address state and Address ZIP code where the Local Agency receives mail. 
+        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the Local Agency receives mail.
         /// </summary>
         [Required]
         public MailingAddressRq LocalAgencyAddress { get; set; }
@@ -71,7 +71,7 @@ namespace WUMEI.Models
         /// A constructed data element containing First name, middle initial, last name and suffix.
         /// </summary>
         [Required]
-        public ContactNameRq LocalAgencyContact { get; set; }
+        public ContactName LocalAgencyContact { get; set; }
 
         /// <summary>
         /// The times of day when entity is available.

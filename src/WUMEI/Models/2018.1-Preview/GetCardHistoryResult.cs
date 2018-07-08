@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using WUMEI.Models;
 
 namespace WUMEI.Models
 {
@@ -34,7 +33,7 @@ namespace WUMEI.Models
         public string CardholderRelationship { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required, StringLength(19)]
@@ -88,7 +87,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
         [Required]
-        public ContactNameRq CardholderName { get; set; }
+        public ContactName CardholderName { get; set; }
 
         /// <summary>
         /// A code identifying changes made to the PIN associated with the card.

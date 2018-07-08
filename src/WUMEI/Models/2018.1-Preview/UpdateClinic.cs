@@ -26,8 +26,8 @@ namespace WUMEI.Models
         public string ActionCode { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2, 
-        /// Address city, Address state and Address ZIP code where the Clinic receives mail. 
+        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the Clinic receives mail.
         /// </summary>
         public MailingAddressOp ClinicAddress { get; set; }
 
@@ -81,7 +81,7 @@ namespace WUMEI.Models
         /// <summary>
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
-        public ContactNameOp ClinicContactName { get; set; }
+        public ContactName ClinicContactName { get; set; }
 
         /// <summary>
         /// The times of day when entity is available.

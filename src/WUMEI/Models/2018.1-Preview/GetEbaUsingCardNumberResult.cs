@@ -15,13 +15,13 @@ namespace WUMEI.Models
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2, 
-        /// Address city, Address state and Address ZIP code where the household receives mail. 
+        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the household receives mail.
         /// </summary>
         public MailingAddressOp HouseholdMailingAddress { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         /// <remarks>
@@ -62,7 +62,7 @@ namespace WUMEI.Models
         /// <summary>
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
-        public ContactNameOp HeadOfHouseholdName { get; set; }
+        public ContactName HeadOfHouseholdName { get; set; }
 
         /// <summary>
         /// A code indicating the status of the entity indicated.
