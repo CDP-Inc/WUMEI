@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -15,15 +14,16 @@ namespace WUMEI.Models
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2, 
-        /// Address city, Address state and Address ZIP code where the household receives mail. 
+        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the household receives mail.
         /// </summary>
         public MailingAddressOp HouseholdMailingAddress { get; set; }
 
         /// <summary>
         /// Month, day and year the head of household was born expressed in GMT in accordance with ISO 8601.
         /// </summary>
-        public DateTime DateOfBirth { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string DateOfBirth { get; set; }
 
         /// <summary>
         /// A value indicating whether the person being identified is male or female.

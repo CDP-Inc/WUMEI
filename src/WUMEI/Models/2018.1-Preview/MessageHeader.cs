@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -18,18 +17,19 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if message originates from a clinic.
         /// </remarks>
-        [Range(typeof(int), "0", "9999999999")]
-        public int ClinicId { get; set; }
+        [Range(typeof(long), "0", "9999999999")]
+        public long ClinicId { get; set; }
 
         /// <summary>
         /// Date and time the originator of the function sends the message or batch expressed in GMT in
         /// accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime TransmissionDateTime { get; set; }
+        [RegularExpression(CustomRegex.TransmissionDT)]
+        public string TransmissionDateTime { get; set; }
 
         /// <summary>
-        /// A value returned in a message based system interface to explicitly indicate the information 
+        /// A value returned in a message based system interface to explicitly indicate the information
         /// sent was received and the action taken.
         /// </summary>
         /// <remarks>Indicates that a message was received and the result of processing the message.</remarks>
@@ -38,7 +38,7 @@ namespace WUMEI.Models
         public string FunctionReturnCode { get; set; }
 
         /// <summary>
-        /// Text description associated with Function return code. 
+        /// Text description associated with Function return code.
         /// </summary>
         [StringLength(50)]
         [RegularExpression(CustomRegex.AbcNumSpace)]
@@ -83,11 +83,12 @@ namespace WUMEI.Models
         /// WIC EBT system interface.
         /// </summary>
         /// <remarks>Assigned by sender, echoed in response.</remarks>
+        [Required]
         [Range(typeof(long), "0", "999999999999999999")]
         public long UniqueTransactionId { get; set; }
 
         /// <summary>
-        /// String used to identify user in the WIC EBT System. Used in conjunction with the 
+        /// String used to identify user in the WIC EBT System. Used in conjunction with the
         /// WIC EBT System ID to uniquely identify a user.
         /// </summary>
         [StringLength(50)]

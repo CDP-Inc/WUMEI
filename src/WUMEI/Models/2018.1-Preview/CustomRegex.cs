@@ -1,7 +1,7 @@
 ﻿namespace WUMEI.Models
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class CustomRegex
     {
@@ -33,7 +33,7 @@
         /// <summary>
         /// Regex String for Alphabetical, Numeric and Special characters.
         /// </summary>
-        public const string AbcNumSpec = @"[A-Za-z0-9#$%&'()*+,\-./:;<>=>?@[\\\]^{|}~]+";   
+        public const string AbcNumSpec = @"[A-Za-z0-9#$%&'()*+,\-./:;<>=>?@[\\\]^{|}~]+";
 
         /// <summary>
         /// Regex String for Alphabetical, Numeric and Space characters.
@@ -64,5 +64,15 @@
         /// Regex String for Price characters.
         /// </summary>
         public const string Price = @"\d*(\.\d{1,2})";
+
+        /// <summary>
+        /// Format for the standard WUMEI 2018 date type - YYYY-MM-DD
+        /// </summary>
+        public const string StandardDate = @"[0-9]{4}-[0-9]{2}-[0-9]{2}";
+
+        /// <summary>
+        /// Format for the Date and Time, Transmission - YYYY-MM-DDThh:mm:ss.sssZ.
+        /// </summary>
+        public const string TransmissionDT = @"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z";
     }
 }
