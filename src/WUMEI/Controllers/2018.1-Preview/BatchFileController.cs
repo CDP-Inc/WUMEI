@@ -9,7 +9,7 @@ namespace WUMEI.Controllers
     /// with some transfers being initiated by the WIC MIS and others by the WIC EBT system.
     /// </summary>
     [ApiVersion("2018.1-Preview")]
-    [Route("WUMEI/{version:apiVersion}/[controller]/[action]")]
+    [Route("WUMEISample/{version:apiVersion}/[controller]/[action]")]
     public class BatchFileController : Controller
     {
         /// <summary>

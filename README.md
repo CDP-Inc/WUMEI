@@ -16,7 +16,7 @@ To get started, clone this repository to your machine and open with Visual Studi
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:24041/WUMEI/",
+      "applicationUrl": "http://localhost:24041/WUMEISample/",
       "sslPort": 0
     }
   },
@@ -45,6 +45,6 @@ In addition to automated CI builds, automated CD releases are also setup as a tr
 
 # References
 
-* [Live API Documentation](https://ebtkickoff.cdpehs.com/WUMEI/swagger/)
+* [Live API Documentation](https://ebtkickoff.cdpehs.com/WUMEISample/swagger/)
 * [Swagger API Tooling](https://swagger.io/)
 * [WIC EBT Operating Rules & Technical Implementation Guide](https://www.fns.usda.gov/wic/wic-ebt-operating-rules-technical-implementation-guide)

@@ -8,7 +8,7 @@ namespace WUMEI.Controllers
     /// the WIC EBT system to the WIC Vendor
     /// </summary>
     [ApiVersion("2018.1-Preview")]
-    [Route("WUMEI/{version:apiVersion}/[controller]/[action]")]
+    [Route("WUMEISample/{version:apiVersion}/[controller]/[action]")]
     public class FinancialSettlementController : Controller
     {
         /// <summary>
