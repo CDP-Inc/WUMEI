@@ -22,8 +22,6 @@ namespace WUMEI.Models
         /// </summary>
         /// <remarks>
         /// Required if specific Benefit issuance ID requested.
-        /// Sent "999,999,999,999" to request a balance broken down across all Benefit issuance IDs
-        /// where benefits match the requested date range.
         /// </remarks>
         [StringLength(20)]
         [RegularExpression(CustomRegex.AbcNum)]
