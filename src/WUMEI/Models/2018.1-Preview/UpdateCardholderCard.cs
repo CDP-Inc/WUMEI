@@ -28,7 +28,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements Address line 1, Address line 2,
         /// Address city, Address state and Address ZIP code where the cardholder receives mail.
         /// </summary>
-        public MailingAddressOp CardholderMailingAddress { get; set; }
+        public CardholderMailingAddress CardholderMailingAddress { get; set; }
 
         /// <summary>
         /// A description of the unique relationship of the WIC Cardholder
@@ -65,19 +65,21 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if a specific future date is to be used.
         /// </remarks>
-        public DateTime DateEffective { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string DateEffective { get; set; }
 
         /// <summary>
         /// Month, day and year the cardholder was born expressed in GMT
         /// in accordance with ISO 8601.
         /// </summary>
-        public DateTime CardholderDateOfBirth { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string CardholderDateOfBirth { get; set; }
 
         /// <summary>
         /// A value indicating whether the person being identified is male or female.
         /// </summary>
         [StringLength(1)]
-        [RegularExpression(CustomRegex.Abc)]
+        [RegularExpression(@"^(M|F){1}$")]
         public string Gender { get; set; }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
         [Required]
-        public ContactName CardholderName { get; set; }
+        public CardholderContactName CardholderName { get; set; }
 
         /// <summary>
         /// Phone number for cardholder.
