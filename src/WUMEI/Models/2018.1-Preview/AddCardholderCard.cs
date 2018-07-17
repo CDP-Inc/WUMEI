@@ -40,7 +40,8 @@ namespace WUMEI.Models
         /// Month, day and year the cardholder was born expressed in GMT
         /// in accordance with ISO 8601.
         /// </summary>
-        public DateTime CardholderDateOfBirth { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string CardholderDateOfBirth { get; set; }
 
         /// <summary>
         /// A value indicating whether the person being identified is male or female.
