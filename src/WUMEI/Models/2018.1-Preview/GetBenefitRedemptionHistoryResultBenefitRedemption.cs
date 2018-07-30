@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
     /// <summary>
-    /// Collection of Detail Records for the Report WIC Benefit Redemptions method.
+    /// Data element that is repeated for each purchase return by GetBenefitRedemptionHistory.
     /// </summary>
-    public class ReportWicBenefitRedemptionsDetailRecords
+    public class GetBenefitRedemptionHistoryResultBenefitRedemption
     {
         /// <summary>
         /// A code identifying the entity acquiring the transaction.
@@ -28,10 +27,10 @@ namespace WUMEI.Models
         public decimal DiscountAmount { get; set; }
 
         /// <summary>
-        /// The amount paid to a WIC Vendor for a purchase transaction less any discounts or adjustements.
+        /// The amount paid to a WIC Vendor for a purchase transaction less any discounts or adjustments.
         /// The Amount, paid at the transaction level shall equal the sum of the Amount, paid of all of the reported
         /// line items less the Amount, discount at the transaction level. The Amount, paid for an individual line
-        /// item is equal to the Original item price as adjusted for Amount, NTE Adjugement and Amount,
+        /// item is equal to the Original item price as adjusted for Amount, NTE Adjustment and Amount,
         /// adjustment times the approved Purchase quantity; cannot be less than zero.
         /// </summary>
         [Required]
@@ -43,7 +42,7 @@ namespace WUMEI.Models
         /// Sum of all adjustments made to the item prices of the individual food items for a transaction.
         /// </summary>
         /// <remarks>
-        /// The sum of all adjustments to the reported line items.
+        /// Includes adjustments to the transaction for NTE price or other adjustments.
         /// </remarks>
         [Required]
         [Range(typeof(decimal), "0.0", "99999999999.99")]
@@ -55,7 +54,7 @@ namespace WUMEI.Models
         /// of the transaction including any surcharges.
         /// </summary>
         /// <remarks>
-        /// The original amount of the transaction before any adjustments or discounts.
+        /// Original requested amount
         /// </remarks>
         [Required]
         [Range(typeof(decimal), "0.0", "9999999999.99")]
@@ -72,12 +71,12 @@ namespace WUMEI.Models
         /// <summary>
         /// A unique value that identifies the terminal at the WIC Vendor location.
         /// </summary>
-        [Required, StringLength(15)]
+        [Required, StringLength(8)]
         [RegularExpression(CustomRegex.AbcNumSpace)]
         public string CardAcceptorTerminalIdentificationCode { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required, StringLength(19)]
@@ -85,24 +84,27 @@ namespace WUMEI.Models
         public string CardNumber { get; set; }
 
         /// <summary>
-        /// Date/time when a transaction occured based on date/time of EBT Card Issuer Processor
+        /// Date/time when a transaction occurred based on date/time of EBT Card Issuer Processor
         /// system expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime HostDateAndTime { get; set; }
+        [RegularExpression(CustomRegex.TransmissionDT)]
+        public string HostDateAndTime { get; set; }
 
         /// <summary>
-        /// Date/time when a transaction occured based on date and time of WIC Vendor system
+        /// Date/time when a transaction occurred based on date and time of WIC Vendor system.
         /// </summary>
         [Required]
-        public DateTime LocalTransactionDateAndTime { get; set; }
+        [RegularExpression(CustomRegex.TransmissionDT)]
+        public string LocalTransactionDateAndTime { get; set; }
 
         /// <summary>
-        /// The calendar date on which a transaction occured or date reported by the EBT system
+        /// The calendar date on which a transaction occurred or date reported by the EBT system
         /// for the transaction expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime BusinessDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BusinessDate { get; set; }
 
         /// <summary>
         /// The year, month and day funds are transferred between the acquired and the card issuer expressed in
@@ -112,7 +114,8 @@ namespace WUMEI.Models
         /// As recored by the EBT system.
         /// </remarks>
         [Required]
-        public DateTime SettlementDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string SettlementDate { get; set; }
 
         /// <summary>
         /// The identity of the institution forwarding the information.
@@ -129,8 +132,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required for WIC Smart Card EBT transactions only.
         /// </remarks>
-        [StringLength(2)]
-        [RegularExpression(CustomRegex.AbcNum)]
+        [StringLength(6)]
+        [RegularExpression(CustomRegex.AbcNumSpec)]
         public string IntegratedCircuitCardResultCode { get; set; }
 
         /// <summary>
@@ -138,12 +141,12 @@ namespace WUMEI.Models
         /// of that message.
         /// </summary>
         /// <remarks>
-        /// Required if Type code reported is not a purchase; from the WIC auto-reconcilation file
-        /// "D4 - detail record" or "E2 - addenda record" or "D5 - adjusment record" for both
+        /// Required if Type code reported is not a purchase; from the WIC auto-reconciliation file
+        /// "D4 - detail record" or "E2 - addenda record" or "D5 - adjustment record" for both
         /// WIC Online and Smart Card EBT.
         /// </remarks>
         [Range(typeof(short), "0", "9999")]
-        public short MessageReasonCode { get; set; }
+        public short? MessageReasonCode { get; set; }
 
         /// <summary>
         /// The original Unique EBT transaction identifier number that was assigned to a redemption
@@ -153,22 +156,19 @@ namespace WUMEI.Models
         /// For a reversal, refers to the original transaction.
         /// </remarks>
         [Range(typeof(long), "0", "999999999999999999")]
-        public long OriginalUniqueTransactionId { get; set; }
+        public long? OriginalUniqueTransactionId { get; set; }
 
         /// <summary>
-        /// A series of code intended to identify terminal capability, terminal environment 
+        /// A series of code intended to identify terminal capability, terminal environment
         /// and presentation security data.
         /// </summary>
         [Required]
         public PosDataCode PosDataCode { get; set; }
 
         /// <summary>
-        /// A number assigned by the message initiator to uniquely identify a transaction 
+        /// A number assigned by the message initiator to uniquely identify a transaction
         /// in WIC redemption processing
         /// </summary>
-        /// <remarks>
-        /// Identifies the original redemption transaction.
-        /// </remarks>
         [Required]
         [Range(typeof(int), "0", "999999")]
         public int SystemsTraceAuditNumber { get; set; }
@@ -178,9 +178,10 @@ namespace WUMEI.Models
         /// WIC Online EBT.
         /// </summary>
         /// <remarks>
-        /// Required for WIC Online EBT, value is the action code (bit 39).
+        /// Required for WIC Online EBT if Type code is not an approved purchase.
+        /// Value is the action code (bit 39).
         /// </remarks>
-        [Range(typeof(short), "0", "9999")]
+        [Range(typeof(short), "0", "999")]
         public short TransactionReasonCode { get; set; }
 
         /// <summary>
@@ -212,7 +213,7 @@ namespace WUMEI.Models
         public string WicMisAccountId { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC Management Information System to idenfity the WIC Vendor
+        /// Value assigned by the WIC Management Information System to identify the WIC Vendor
         /// equal to WIC merchant ID from X9.93.
         /// </summary>
         [Required, StringLength(12)]
@@ -228,8 +229,8 @@ namespace WUMEI.Models
         public int WicVendorPeerGroupId { get; set; }
 
         /// <summary>
-        /// Data element that is repetaed for each food item in the purchase.
+        /// Data element that is repeated for each food item in the purchase.
         /// </summary>
-        public IEnumerable<GetBenefitRedemptionHistoryResultFoodItem> FoodBenefitBalance { get; set; }
+        public List<GetBenefitRedemptionHistoryResultFoodItem> BenefitRedemptionFoodItems { get; set; }
     }
 }

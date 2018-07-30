@@ -15,7 +15,7 @@ namespace WUMEI.Models
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         /// <remarks>
@@ -29,13 +29,15 @@ namespace WUMEI.Models
         /// End of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime EndRequestDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EndRequestDate { get; set; }
 
         /// <summary>
         /// Beginning of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime BeginRequesttDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BeginRequestDate { get; set; }
 
         /// <summary>
         /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.

@@ -7,7 +7,7 @@ namespace WUMEI.Models
     /// <summary>
     /// Data element that is repeated for each food item in the purchase.
     /// </summary>
-    public class GetBenefitRedemptionHistoryResultFoodItems
+    public class GetBenefitRedemptionHistoryResultFoodItem
     {
         /// <summary>
         /// The amount deducted from the Item price for an individual food item;
@@ -18,7 +18,7 @@ namespace WUMEI.Models
         public decimal ItemDiscountAmount { get; set; }
 
         /// <summary>
-        /// The amoutn of the adjustment applied to the price of a food item due to the original item price
+        /// The amount of the adjustment applied to the price of a food item due to the original item price
         /// being in excess of the not to exceed amount for the peer group of the vendor.
         /// </summary>
         [Range(typeof(decimal), "0.0", "9999.99")]
@@ -26,10 +26,17 @@ namespace WUMEI.Models
         public decimal NteAdjustmentAmount { get; set; }
 
         /// <summary>
-        /// The amount paid to a WIC Vendor for a purchase transaction less any discounts or adjustements.
+        /// The amount of the adjustment applied to the price of a food item due to recoupment owed by the vendor.
+        /// </summary>
+        [Range(typeof(decimal), "0.0", "9999.99")]
+        [RegularExpression(CustomRegex.Price)]
+        public decimal RecoupmentAdjustmentAmount { get; set; }
+
+        /// <summary>
+        /// The amount paid to a WIC Vendor for a purchase transaction less any discounts or adjustments.
         /// The Amount, paid at the transaction level shall equal the sum of the Amount, paid of all of the reported
         /// line items less the Amount, discount at the transaction level. The Amount, paid for an individual line
-        /// item is equal to the Original item price as adjusted for Amount, NTE Adjugement and Amount, recoupment
+        /// item is equal to the Original item price as adjusted for Amount, NTE Adjustment and Amount, recoupment
         /// adjustment times the approved Purchase quantity; cannot be less than zero.
         /// </summary>
         [Required]
@@ -44,9 +51,9 @@ namespace WUMEI.Models
         /// <remarks>
         /// Original value from the benefits issued at the WIC MIS account ID level.
         /// </remarks>
-        [Required, StringLength(20)]
-        [RegularExpression(CustomRegex.AbcNum)]
-        public string BenefitIssuanceId { get; set; }
+        [Required]
+        [Range(typeof(long), "0", "999999999999")]
+        public long BenefitIssuanceId { get; set; }
 
         /// <summary>
         /// Text description of the originator's specified benefit issuance unit of measure
@@ -55,7 +62,7 @@ namespace WUMEI.Models
         /// <remarks>
         /// Only first 6 characters are significant.
         /// </remarks>
-        [Required, StringLength(50)]
+        [Required, StringLength(6)]
         [RegularExpression(CustomRegex.AbcNumSpec)]
         public string BenefitUnitDescription { get; set; }
 
@@ -65,12 +72,12 @@ namespace WUMEI.Models
         /// <remarks>
         /// Category code of the benefit applied to the food item.
         /// </remarks>
-        [Required, StringLength(2)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CategoryCode { get; set; }
+        [Required]
+        [Range(typeof(int), "0", "99")]
+        public int CategoryCode { get; set; }
 
         /// <summary>
-        /// A literal describing the Category code as specified by the originatiing WIC authority suitable
+        /// A literal describing the Category code as specified by the originating WIC authority suitable
         /// for printing or displaying in areas where display width is not a concern.
         /// </summary>
         [StringLength(50)]
@@ -85,19 +92,21 @@ namespace WUMEI.Models
         /// redeemed as part of this transaction.
         /// </remarks>
         [Range(typeof(int), "0", "9999999999")]
-        public int ClinicId { get; set; }
+        public int? ClinicId { get; set; }
 
         /// <summary>
         /// First date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime BeginBenefitDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BeginBenefitDate { get; set; }
 
         /// <summary>
         /// Last date on which benefits may be used expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime EndBenefitDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EndBenefitDate { get; set; }
 
         /// <summary>
         /// An identifier assigned to a WIC MIS user that is used to track activity in the system.
@@ -129,7 +138,7 @@ namespace WUMEI.Models
         /// </summary>
         [Range(typeof(decimal), "0.0", "9999.99")]
         [RegularExpression(CustomRegex.Price)]
-        public decimal ItemNte { get; set; }
+        public decimal? ItemNte { get; set; }
 
         /// <summary>
         /// The purchase amount assigned to one unit of a food item.
@@ -147,7 +156,7 @@ namespace WUMEI.Models
         /// </summary>
         /// <remarks>
         /// Required when a single food item requires multiple reporting records to account for applying units across
-        /// Sub-categories or Benefit IDs. May be the original Record sequence number for the food item from the 
+        /// Sub-categories or Benefit IDs. May be the original Record sequence number for the food item from the
         /// WIC auto-reconciliation addenda record 2 (e2).
         /// </remarks>
         [Range(typeof(int), "0", "999999")]
@@ -165,8 +174,8 @@ namespace WUMEI.Models
         public string LocalAgencyId { get; set; }
 
         /// <summary>
-        /// The amount requested by a WIC vendor for a purchase transaction for the specific item purchased. The 
-        /// Original amount is equal to the requested Original item price times the apporved Original purchase
+        /// The amount requested by a WIC vendor for a purchase transaction for the specific item purchased. The
+        /// Original amount is equal to the requested Original item price times the approved Original purchase
         /// quantity and cannot be less than zero.
         /// </summary>
         [Required]
@@ -180,9 +189,9 @@ namespace WUMEI.Models
         /// <remarks>
         /// Category code assigned to the UPC or PLU.
         /// </remarks>
-        [Required, StringLength(2)]
-        [RegularExpression(CustomRegex.Num)]
-        public string OriginalCategoryCode { get; set; }
+        [Required]
+        [Range(typeof(int), "0", "99")]
+        public int OriginalCategoryCode { get; set; }
 
         /// <summary>
         /// The original purchase amount for a single food item in the original request.
@@ -198,8 +207,7 @@ namespace WUMEI.Models
         /// </summary>
         [Required]
         [Range(typeof(decimal), "0.0", "999.99")]
-        [RegularExpression(CustomRegex.Num)]
-        public decimal OriginalPurchaseQuantity {get;set;}
+        public decimal OriginalPurchaseQuantity { get; set; }
 
         /// <summary>
         /// A code furhter identifying the requested type of product as defined in the Nation UPC database.
@@ -215,7 +223,6 @@ namespace WUMEI.Models
         /// The size of the contents of the package quantified in the standard benefit units of measure.
         /// </summary>
         [Range(typeof(decimal), "0.0", "999.99")]
-        [RegularExpression(CustomRegex.Price)]
         public decimal PackageSize { get; set; }
 
         /// <summary>
@@ -224,16 +231,15 @@ namespace WUMEI.Models
         /// </summary>
         [Required]
         [Range(typeof(decimal), "0.0", "999.99")]
-        [RegularExpression(CustomRegex.Num)]
         public decimal PurchaseQuantity { get; set; }
 
         /// <summary>
         /// A code further identifying the type of product within a Category code
         /// as defined in the National UPC database.
         /// </summary>
-        [Required, StringLength(3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string SubcategoryCode { get; set; }
+        [Required]
+        [Range(typeof(int), "0", "999")]
+        public int SubcategoryCode { get; set; }
 
         /// <summary>
         /// A long description of the Sub-Category code suitable for printing or displaying
@@ -248,7 +254,6 @@ namespace WUMEI.Models
         /// </summary>
         [Required]
         [Range(typeof(decimal), "0.0", "999.99")]
-        [RegularExpression(CustomRegex.Num)]
         public decimal Units { get; set; }
 
         /// <summary>
@@ -258,9 +263,9 @@ namespace WUMEI.Models
         /// <remarks>
         /// Contains UPC/PLU indicator, UPC/PLU and UPC/PLU check digit
         /// </remarks>
-        [Required, StringLength(17)]
-        [RegularExpression(CustomRegex.Num)]
-        public string UpcPluData { get; set; }
+        [Required]
+        [Range(typeof(long), "0", "99999999999999999")]
+        public long UpcPluData { get; set; }
 
         /// <summary>
         /// Indicate the number of significant digits in the UPC or PLU
@@ -280,7 +285,7 @@ namespace WUMEI.Models
         /// A value identifying the workstation initiating the function.
         /// </summary>
         /// <remarks>
-        /// Required if Clinic ID of original transaction being retrieved is present and was provided with the 
+        /// Required if Clinic ID of original transaction being retrieved is present and was provided with the
         /// original issuance of the benefit that was redeemed as part of this transaction.
         /// </remarks>
         [StringLength(20)]
