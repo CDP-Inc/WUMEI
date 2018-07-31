@@ -36,7 +36,7 @@ namespace WUMEI.Models
         /// Required when used to add or update the value of the PIN. May required additional
         /// data elements as defined by bilateral agreement depending on encryption methodology used.
         /// </remarks>
-        [StringLength(16)]
+        [StringLength(72)]
         [RegularExpression(CustomRegex.Hex)]
         public string EncryptedPin { get; set; }
     }

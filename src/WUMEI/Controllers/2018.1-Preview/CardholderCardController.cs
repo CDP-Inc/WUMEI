@@ -31,19 +31,21 @@ namespace WUMEI.Controllers
 
         /// <summary>
         /// The Add or Update PIN function is an optional function that uses a message based system interface
-        /// to associate a PIN with the cardholder of the given card for WIC Online EBT PIN verification.
+        /// to associate a PIN with the cardholder of the given card for WIC online EBT PIN verification.
         /// </summary>
-        /// <param name="pin"></param>
-        /// <returns></returns>
+        /// <param name="input">
+        /// Details of the account and PIN to be added or updated.
+        /// </param>
+        /// <response code="200">Returns the updated message header.</response>
         [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(MessageHeader), 200)]
         public IActionResult AddUpdatePin(
-            [FromBody]AddUpdatePin pin
+            [FromBody]AddUpdatePin input
         )
         {
-            return Ok(pin.MessageHeader);
+            return Ok(input.MessageHeader);
         }
 
         /// <summary>
