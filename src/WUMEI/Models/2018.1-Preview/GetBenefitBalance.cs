@@ -41,12 +41,14 @@ namespace WUMEI.Models
         /// <summary>
         /// Beginning of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
-        public DateTime BeginRequesttDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BeginRequestDate { get; set; }
 
         /// <summary>
         /// End of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
-        public DateTime EndRequestDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EndRequestDate { get; set; }
 
         /// <summary>
         /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.

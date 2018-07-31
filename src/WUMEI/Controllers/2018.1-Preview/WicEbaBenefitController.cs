@@ -38,27 +38,27 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Get Benefit Balance function is a required function that uses a message based system interface 
+        /// The Get Benefit Balance function is a required function that uses a message based system interface
         /// to retrieve benefit information for a particular EBA.
         /// </summary>
         /// <remarks>
-        /// This function allows the WIC MIS to retrieve from the WIC EBT system the remaining balance for 
-        /// the EBA and display it via the WIC MIS. 
+        /// This function allows the WIC MIS to retrieve from the WIC EBT system the remaining balance for
+        /// the EBA and display it via the WIC MIS.
         /// Note that the benefit balance is reported at the household level only.
         /// </remarks>
-        /// <param name="benefits">Details of the benefits to be returned.</param>
-        /// <response code="200">Returns the updated message header and benefit details.</response>    
-        [HttpGet]
+        /// <param name="input">Details of the benefits to be returned.</param>
+        /// <response code="200">Returns the updated message header and benefit details.</response>
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetBenefitBalanceResult), 200)]
         public IActionResult GetBenefitBalance(
-            [FromBody]GetBenefitBalance benefits
+            [FromBody] GetBenefitBalance input
         )
         {
             return Ok(new GetBenefitBalanceResult
             {
-                MessageHeader = benefits.MessageHeader
+                MessageHeader = input.MessageHeader
             });
         }
 
