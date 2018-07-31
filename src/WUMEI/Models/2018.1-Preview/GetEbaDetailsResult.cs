@@ -29,7 +29,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
         /// </remarks>
-        public DateTime DateOfBirth { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string DateOfBirth { get; set; }
 
         /// <summary>
         /// A value indicating whether the person being identified is male or female.

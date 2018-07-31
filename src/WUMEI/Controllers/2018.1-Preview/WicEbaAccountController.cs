@@ -69,19 +69,19 @@ namespace WUMEI.Controllers
         /// This function allows a WIC MIS user the ability to have EBA information displayed via a WIC MIS screen. 
         /// The WIC EBT System shall identify the EBA and return the household data information available.
         /// </remarks>
-        /// <param name="eba">Details of the EBA to be returned.</param>
+        /// <param name="input">Details of the EBA to be returned.</param>
         /// <response code="200">Returns the updated message header and EBA details.</response>    
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetEbaDetailsResult), 200)]
         public IActionResult GetEbaDetails(
-            [FromBody]GetEbaDetails eba
+            [FromBody]GetEbaDetails input
         )
         {
             return Ok(new GetEbaDetailsResult
             {
-                MessageHeader = eba.MessageHeader
+                MessageHeader = input.MessageHeader
             });
         }
         
