@@ -30,13 +30,15 @@ namespace WUMEI.Models
         /// Beginning of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime BeginRequestDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BeginRequestDate { get; set; }
 
         /// <summary>
         /// End of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime EndRequestDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EndRequestDate { get; set; }
 
         /// <summary>
         /// A code indicating the kind of entity being acted or reported upon in the function.
