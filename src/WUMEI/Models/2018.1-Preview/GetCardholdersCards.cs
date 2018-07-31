@@ -22,7 +22,7 @@ namespace WUMEI.Models
         /// <remarks>
         /// If used, note that formatting of address information may result in mismatches.
         /// </remarks>
-        public MailingAddressOp CardholderMailingAddress { get; set; }
+        public CardholderMailingAddress CardholderMailingAddress { get; set; }
 
         /// <summary>
         /// A series of digits appearing on the face of the WIC Card or encoded on the
@@ -36,30 +36,25 @@ namespace WUMEI.Models
         /// Month, day and year the cardholder was born expressed in GMT
         /// in accordance with ISO 8601.
         /// </summary>
-        public DateTime CardholderDateOfBirth { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string CardholderDateOfBirth { get; set; }
 
         /// <summary>
         /// Beginning of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
-        /// <remarks>
-        /// Defaults to the current date.
-        /// </remarks>
-        [Required]
-        public DateTime BeginRequesttDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BeginRequestDate { get; set; }
 
         /// <summary>
         /// End of period being referenced for this function expressed in GMT in accordance with ISO 8601.
         /// </summary>
-        /// <remarks>
-        /// Defaults to the current date.
-        /// </remarks>
-        [Required]
-        public DateTime EndRequestDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EndRequestDate { get; set; }
 
         /// <summary>
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
-        public ContactName CardholderName { get; set; }
+        public CardholderContactName CardholderName { get; set; }
 
         /// <summary>
         /// A code indicating the status of the entity indicated.

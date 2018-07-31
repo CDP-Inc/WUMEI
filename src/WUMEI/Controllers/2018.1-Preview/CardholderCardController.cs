@@ -50,19 +50,19 @@ namespace WUMEI.Controllers
         /// The Get Cardholders/Cards function is a required function that uses a message based system interface 
         /// to get a list of cardholders and cards.
         /// </summary>
-        /// <param name="card"></param>
+        /// <param name="input">data specifying the cardholder information to return</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetCardholdersCardsResult), 200)]
         public IActionResult GetCardholdersCards(
-            [FromBody]GetCardholdersCards card
+            [FromBody]GetCardholdersCards input
         )
         {
             return Ok(new GetCardholdersCardsResult
             {
-                MessageHeader = card.MessageHeader,
+                MessageHeader = input.MessageHeader,
             });
         }
 
