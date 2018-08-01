@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace WUMEI.Models._2018._1_Preview
 {
+    /// <summary>
+    /// Object that contains fields for Contact Names when they are optional.
+    /// </summary>
     public class BenefitMaintenanceHistoryDetails
     {
         /// <summary>

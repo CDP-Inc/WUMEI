@@ -16,6 +16,9 @@ namespace WUMEI.Models
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
+        /// <summary>
+        /// History Details
+        /// </summary>
         public List<BenefitMaintenanceHistoryDetails> BenefitHistoryDetails { get; set; }
     }
 }

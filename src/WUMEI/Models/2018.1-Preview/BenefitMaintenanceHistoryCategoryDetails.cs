@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace WUMEI.Models._2018._1_Preview
 {
+    /// <summary>
+    /// Category Details
+    /// </summary>
     public class BenefitMaintenanceHistoryCategoryDetails
     {
         /// <summary>
