@@ -21,7 +21,8 @@ namespace WUMEI.Models
         /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
-        [Required, StringLength(19)]
+        [Required]
+        [StringLength(19)]
         [RegularExpression(CustomRegex.Num)]
         public string CardNumber { get; set; }
 
@@ -109,7 +110,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Original Reason code (Issued, Lost, Returned, etc.) sent with the action.
         /// </remarks>
-        [Required, StringLength(4, MinimumLength = 4)]
+        [Required]
+        [StringLength(4, MinimumLength = 4)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string ReasonCode { get; set; }
 
@@ -119,7 +121,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Activated, Valid, etc.
         /// </remarks>
-        [Required, StringLength(4, MinimumLength = 4)]
+        [Required]
+        [StringLength(4, MinimumLength = 4)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string StatusCode { get; set; }
 
@@ -129,14 +132,16 @@ namespace WUMEI.Models
         /// <remarks>
         /// Cardholder type (Primary, Secondary, and Proxy).
         /// </remarks>
-        [Required, StringLength(1)]
+        [Required]
+        [StringLength(1)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string TypeCode { get; set; }
 
         /// <summary>
         /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
         /// </summary>
-        [Required, StringLength(19, MinimumLength = 2)]
+        [Required]
+        [StringLength(19, MinimumLength = 2)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string WicMisAccountId { get; set; }
     }
