@@ -12,17 +12,17 @@ namespace WUMEI.Controllers
     public class WicEbaBenefitController : Controller
     {
         /// <summary>
-        /// The Add or Update Benefits function is a required function that uses a message based system 
+        /// The Add or Update Benefits function is a required function that uses a message based system
         /// interface to add (issue) or subtract (void) a Benefit quantity from an EBA.
         /// </summary>
         /// <remarks>
-        /// Issuing benefits results in an addition (credit) to the WIC Cardholder’s benefits; voiding benefits 
-        /// results in a subtraction (debit). 
-        /// Current and future benefits may be issued, voided or placed on hold by using the Date, begin benefit 
+        /// Issuing benefits results in an addition (credit) to the WIC Cardholder’s benefits; voiding benefits
+        /// results in a subtraction (debit).
+        /// Current and future benefits may be issued, voided or placed on hold by using the Date, begin benefit
         /// and Date, end benefit data elements in this function.
         /// </remarks>
         /// <param name="benefits">Details of the benefits to be updated.</param>
-        /// <response code="200">Returns the updated message header and status code.</response>    
+        /// <response code="200">Returns the updated message header and status code.</response>
         [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -63,18 +63,18 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Get Benefit Maintenance History function is a required function that uses a message 
+        /// The Get Benefit Maintenance History function is a required function that uses a message
         /// based system interface to retrieve benefit maintenance transaction data for a particular EBA.
         /// </summary>
         /// <remarks>
         /// This function allows the WIC MIS to retrieve from the WIC EBT system the benefit maintenance
-        /// transaction history for a given period for the EBA and display it via the WIC MIS. 
-        /// This function may also be used by the WIC EBT system to retrieve information from the WIC MIS. 
-        /// All benefit additions, voids and purges may be retrieved using this function. 
+        /// transaction history for a given period for the EBA and display it via the WIC MIS.
+        /// This function may also be used by the WIC EBT system to retrieve information from the WIC MIS.
+        /// All benefit additions, voids and purges may be retrieved using this function.
         /// The retention period for benefit data shall be defined by bilateral agreement.
         /// </remarks>
         /// <param name="history">Details of the history to be returned.</param>
-        /// <response code="200">Returns the updated message header and history details.</response>    
+        /// <response code="200">Returns the updated message header and history details.</response>
         [HttpGet]
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -90,14 +90,16 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Get Benefit Redemption History function is a required function that uses a message based system interface to retrieve benefit redemption data for a particular EBA.
+        /// The Get Benefit Redemption History function is a required function that uses a message based system
+        /// interface to retrieve benefit redemption data for a particular EBA.
         /// </summary>
         /// <remarks>
-        /// This function allows the WIC MIS to retrieve from the WIC EBT system the benefit redemption history for a given period and a specific transaction type for the EBA and display it via the WIC MIS. 
+        /// This function allows the WIC MIS to retrieve from the WIC EBT system the benefit redemption history for a
+        /// given period and a specific transaction type for the EBA and display it via the WIC MIS.
         /// Only transactions where redemption was attempted or completed (including those adjusted) are reported.
         /// </remarks>
         /// <param name="history">Details of the history to be returned.</param>
-        /// <response code="200">Returns the updated message header and history details.</response>    
+        /// <response code="200">Returns the updated message header and history details.</response>
         [HttpGet]
         [Consumes("application/json")]
         [Produces("application/json")]

@@ -84,5 +84,26 @@ namespace WUMEI.Controllers
                 MessageHeader = input.MessageHeader
             });
         }
+
+        /// <summary>
+        /// The Get EBA Using Card Number function is an optional function that uses a message based system interface
+        /// to provide the Card number to identify the WIC MIS account ID and then display the household record in the
+        /// WIC MIS.
+        /// </summary>
+        /// <param name="eba">Details of the EBA to be returned.</param>
+        /// <response code="200">Returns the updated message header and EBA details.</response>
+        [HttpGet]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(GetEbaUsingCardNumberResult), 200)]
+        public IActionResult GetEbaUsingCardNumber(
+            [FromBody]GetEbaUsingCardNumber eba
+        )
+        {
+            return Ok(new GetEbaUsingCardNumberResult
+            {
+                MessageHeader = eba.MessageHeader
+            });
+        }
     }
 }
