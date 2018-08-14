@@ -21,6 +21,6 @@ namespace WUMEI.Models
         /// Data elements for the Batch Fonrimation File detail record.
         /// </summary>
         [Required]
-        public IEnumerable<BatchConfirmationFileDetailRecord> DetailRecord { get; set; }
+        public IEnumerable<BatchConfirmationDetailRecord> DetailRecord { get; set; }
     }
 }

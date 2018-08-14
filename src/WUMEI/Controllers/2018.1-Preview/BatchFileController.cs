@@ -13,7 +13,7 @@ namespace WUMEI.Controllers
     public class BatchFileController : Controller
     {
         /// <summary>
-        /// Report Daily Outstanding Liability is an optional function uses a batch based system interface for the 
+        /// Report Daily Outstanding Liability is an optional function uses a batch based system interface for the
         /// WIC EBT System to provide the WIC State Agency's outstanding liability of benefits to be used to reconcile
         /// with the WIC MIS. The report is produced daily and covers the 24 hour cutoff period
         /// agreed to between the MIS and EBT systems.
@@ -32,7 +32,7 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// Report Card Updates is an optional function uses a batch system interface to allow the WIC MIS to update 
+        /// Report Card Updates is an optional function uses a batch system interface to allow the WIC MIS to update
         /// its records to reflect any changes made via the WIC EBT system or at the POS. This function is required if
         /// a WIC State Agency chooses to maintain card status on the WIC MIS and also allows changes to be made to
         /// card status via the WIC EBT system.
@@ -54,7 +54,7 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Add or Update WIC Vendor function is a required function that uses a message or batch based 
+        /// The Add or Update WIC Vendor function is a required function that uses a message or batch based
         /// system interface to establish or modify WIC Vendor information in the WIC EBT System.
         /// </summary>
         /// <remarks>
@@ -74,7 +74,7 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Add or Update WIC Vendor Hierarchy Information function is an optional function that uses a 
+        /// The Add or Update WIC Vendor Hierarchy Information function is an optional function that uses a
         /// message or batch system interface to create and update the WIC EBT system’s WIC Vendor corporate
         /// levels of information.
         /// </summary>
@@ -115,8 +115,8 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Update WIC Vendor Banking Information function is an optional function that uses a message or 
-        /// batch based system interface to add, change or delete banking information for a WIC Vendor in the WIC 
+        /// The Update WIC Vendor Banking Information function is an optional function that uses a message or
+        /// batch based system interface to add, change or delete banking information for a WIC Vendor in the WIC
         /// EBT system.
         /// </summary>
         /// <remarks>
@@ -150,7 +150,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(BatchConfirmationFile), 200)]
         public IActionResult AddUpdateCategorySubcategoryInformation(
-            [FromBody]AddUpdateCategorySubcategoryInformation category
+            [FromBody]CategorySubcategoryFile category
         )
         {
             return Ok(new BatchConfirmationFile());
@@ -265,7 +265,7 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Request ACH Payment function is an optional function that uses a message or batch based system 
+        /// The Request ACH Payment function is an optional function that uses a message or batch based system
         /// interface to allow the WIC State Agency or EBT Card Issuer Processor to make a payment or adjustment
         /// to a WIC Vendor, a WIC Vendor corporate entity or their agent that is outside the normal course of
         /// benefit redemption and settlement.
@@ -287,7 +287,7 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Report ACH Payments function is an optional function that uses a batch based system interface to 
+        /// The Report ACH Payments function is an optional function that uses a batch based system interface to
         /// have the WIC EBT System report all WIC ACH payments requested by the WIC MIS and any initiated by the
         /// WIC EBT System.
         /// </summary>
@@ -303,7 +303,7 @@ namespace WUMEI.Controllers
         {
             return Ok(new BatchConfirmationFile());
         }
-        
+
         /// <summary>
         /// The Report Recoupment Requests function uses a batch system interface to allow the sender to notify the
         /// WIC EBT System of the amounts to be recouped from each vendor.
