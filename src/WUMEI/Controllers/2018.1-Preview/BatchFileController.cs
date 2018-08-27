@@ -338,7 +338,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(BatchConfirmationFile), 200)]
         public IActionResult ReportRecoupmentStatus(
-            [FromBody]ReportRecoupmentStatus recoupment
+            [FromBody]RecoupmentStatusFile recoupment
         )
         {
             return Ok(new BatchConfirmationFile());

@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 namespace WUMEI.Models
 {
     /// <summary>
-    /// Object that contains all parameters for the Report Recoupment Status method.
+    /// Data model for data in RecoupmentStatusReport.
     /// </summary>
-    public class ReportRecoupmentStatus
+    public class RecoupmentStatusFile
     {
         /// <summary>
         /// A constructed data element containing details about the service call and caller.
         /// </summary>
-        [Required]
         public BatchHeader BatchHeader { get; set; }
 
         /// <summary>
-        /// Collection of Detail Records for the Report Recoupment Status method. 
+        /// Gets or sets a list containing the recoupment status records.
         /// </summary>
         [Required]
-        public IEnumerable<ReportRecoupmentStatusDetailRecords> DetailRecords { get; set; }
+        public IEnumerable<RecoupmentStatusRecord> DetailRecords { get; set; }
     }
 }
