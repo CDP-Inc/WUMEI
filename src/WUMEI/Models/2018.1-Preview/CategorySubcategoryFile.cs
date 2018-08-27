@@ -14,6 +14,7 @@ namespace WUMEI.Models
         /// <summary>
         /// Gets or sets the data from the batch file header.
         /// </summary>
+        [Required]
         public BatchHeader Header { get; set; }
 
         /// <summary>

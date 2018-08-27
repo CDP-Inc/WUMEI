@@ -67,7 +67,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(BatchConfirmationFile), 200)]
         public IActionResult AddUpdateWicVendorBatch(
-            [FromBody]AddUpdateWicVendorBatch vendor
+            [FromBody]WicVendorFile vendor
         )
         {
             return Ok(new BatchConfirmationFile());
