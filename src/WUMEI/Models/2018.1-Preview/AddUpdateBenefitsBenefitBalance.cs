@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace WUMEI.Models
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class AddUpdateBenefitsBenefitBalance
     {
@@ -14,12 +14,12 @@ namespace WUMEI.Models
         /// Assigned by the WIC MIS system.
         /// </summary>
         /// <remarks>
-        /// Assigned by the WIC MIS system at issuance; 
+        /// Assigned by the WIC MIS system at issuance;
         /// for updates/voids contains Benefit issuance ID assigned at issuance.
         /// </remarks>
-        [Required, StringLength(20)]
-        [RegularExpression(CustomRegex.AbcNum)]
-        public string BenefitIssuanceId { get; set; }
+        [Required]
+        [Range(typeof(long), "0", "999999999999")]
+        public long BenefitIssuanceId { get; set; }
 
         /// <summary>
         /// An integer number that increments with each Add or Update Benefits message sent using

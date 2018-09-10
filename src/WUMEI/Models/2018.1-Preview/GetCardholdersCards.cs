@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -28,9 +27,8 @@ namespace WUMEI.Models
         /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
-        [StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardNumber { get; set; }
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong? CardNumber { get; set; }
 
         /// <summary>
         /// Month, day and year the cardholder was born expressed in GMT

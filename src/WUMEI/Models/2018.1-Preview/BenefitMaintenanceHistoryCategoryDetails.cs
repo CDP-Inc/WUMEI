@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WUMEI.Models._2018._1_Preview
+﻿namespace WUMEI.Models._2018._1_Preview
 {
     /// <summary>
     /// Category Details
@@ -21,7 +16,7 @@ namespace WUMEI.Models._2018._1_Preview
         /// <summary>
         ///   Category code of the redeemed benefit.
         /// </summary>
-        public int CategoryCode { get; set; }
+        public byte CategoryCode { get; set; }
 
         /// <summary>
         ///   Category Long Description code of the redeemed benefit.
@@ -31,7 +26,7 @@ namespace WUMEI.Models._2018._1_Preview
         /// <summary>
         ///   Subcategory code of the assigned benefit
         /// </summary>
-        public int SubcategoryCode { get; set; }
+        public short SubcategoryCode { get; set; }
 
         /// <summary>
         ///   SubcategoryLongDescription code of the assigned benefit

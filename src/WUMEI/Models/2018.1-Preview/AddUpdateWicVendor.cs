@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using WUMEI.Models._2018._1_Preview;
 
 namespace WUMEI.Models
@@ -41,9 +40,8 @@ namespace WUMEI.Models
         /// A code which defines the action to be taken.
         /// </summary>
         [Required]
-        [StringLength(3, MinimumLength = 3)]
-        [RegularExpression(CustomRegex.AddUpdateWicVendorActionCode)]
-        public string ActionCode { get; set; }
+        [Range(typeof(short), "0", "999")]
+        public short ActionCode { get; set; }
 
         /// <summary>
         /// A constructed data element including the sub-elements Address line 1, Address line 2,
@@ -177,17 +175,15 @@ namespace WUMEI.Models
         /// <summary>
         /// An alternate phone number of a point of contact at the WIC Vendor.
         /// </summary>
-        [StringLength(10)]
-        [RegularExpression(CustomRegex.Num)]
-        public string AlternateWicVendorContactPhoneNumber { get; set; }
+        [Range(typeof(long), "1000000000", "9999999999")]
+        public long? AlternateWicVendorContactPhoneNumber { get; set; }
 
         /// <summary>
         /// The phone number for a point of contact at the WIC Vendor.
         /// </summary>
         [Required]
-        [StringLength(10)]
-        [RegularExpression(CustomRegex.Num)]
-        public string WicVendorContactPhoneNumber { get; set; }
+        [Range(typeof(long), "1000000000", "9999999999")]
+        public long WicVendorContactPhoneNumber { get; set; }
 
         /// <summary>
         /// Reason for an action.

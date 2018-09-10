@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -20,8 +19,9 @@ namespace WUMEI.Models
         /// <remarks>
         /// Accepted values are add or update.
         /// </remarks>
-        [Required, StringLength(3, MinimumLength = 1)]
-        public string ActionCode { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "999")]
+        public short ActionCode { get; set; }
 
         /// <summary>
         /// Gets or sets a text description of the originator's specified benefit issuance unit of measure

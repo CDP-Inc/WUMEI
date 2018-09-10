@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -73,15 +71,15 @@ namespace WUMEI.Models
         /// Category code of the benefit applied to the food item.
         /// </remarks>
         [Required]
-        [Range(typeof(int), "0", "99")]
-        public int CategoryCode { get; set; }
+        [Range(typeof(byte), "0", "99")]
+        public byte CategoryCode { get; set; }
 
         /// <summary>
         /// A literal describing the Category code as specified by the originating WIC authority suitable
         /// for printing or displaying in areas where display width is not a concern.
         /// </summary>
         [StringLength(50)]
-        [RegularExpression(CustomRegex.AbcNumSpace)]
+        [RegularExpression(CustomRegex.AbcNumSpecSpace)]
         public string CategoryLongDescription { get; set; }
 
         /// <summary>
@@ -91,8 +89,9 @@ namespace WUMEI.Models
         /// Required if the Clinic ID was provided with the original issuance of the benefit that was
         /// redeemed as part of this transaction.
         /// </remarks>
-        [Range(typeof(int), "0", "9999999999")]
-        public int? ClinicId { get; set; }
+        [StringLength(10)]
+        [RegularExpression(CustomRegex.AbcNum)]
+        public string ClinicId { get; set; }
 
         /// <summary>
         /// First date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
@@ -190,8 +189,8 @@ namespace WUMEI.Models
         /// Category code assigned to the UPC or PLU.
         /// </remarks>
         [Required]
-        [Range(typeof(int), "0", "99")]
-        public int OriginalCategoryCode { get; set; }
+        [Range(typeof(byte), "0", "99")]
+        public byte OriginalCategoryCode { get; set; }
 
         /// <summary>
         /// The original purchase amount for a single food item in the original request.
@@ -215,9 +214,9 @@ namespace WUMEI.Models
         /// <remarks>
         /// Sub-Category code of the benefit applied to the food item.
         /// </remarks>
-        [Required, StringLength(3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string OriginalSubcategoryCode { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "999")]
+        public short OriginalSubcategoryCode { get; set; }
 
         /// <summary>
         /// The size of the contents of the package quantified in the standard benefit units of measure.
@@ -238,15 +237,15 @@ namespace WUMEI.Models
         /// as defined in the National UPC database.
         /// </summary>
         [Required]
-        [Range(typeof(int), "0", "999")]
-        public int SubcategoryCode { get; set; }
+        [Range(typeof(short), "0", "999")]
+        public short SubcategoryCode { get; set; }
 
         /// <summary>
         /// A long description of the Sub-Category code suitable for printing or displaying
         /// in areas where display width is not a concern.
         /// </summary>
         [StringLength(50)]
-        [RegularExpression(CustomRegex.AbcNumSpace)]
+        [RegularExpression(CustomRegex.AbcNumSpecSpace)]
         public string SubcategoryLongDescription { get; set; }
 
         /// <summary>
@@ -257,22 +256,10 @@ namespace WUMEI.Models
         public decimal Units { get; set; }
 
         /// <summary>
-        /// Information identifying the UPC or PLU assigned to a food item;
-        /// see Technical Implementation Guide for formatting.
-        /// </summary>
-        /// <remarks>
-        /// Contains UPC/PLU indicator, UPC/PLU and UPC/PLU check digit
-        /// </remarks>
-        [Required]
-        [Range(typeof(long), "0", "99999999999999999")]
-        public long UpcPluData { get; set; }
-
-        /// <summary>
-        /// Indicate the number of significant digits in the UPC or PLU
+        /// Gets or sets an object that represents UPC or PLU data
         /// </summary>
         [Required]
-        [Range(typeof(byte), "0", "15")]
-        public byte UpcPluDataLength { get; set; }
+        public UpcPluObject UpcPluData { get; set; }
 
         /// <summary>
         /// The number assigned to a paper sales draft issued to the WIC Participant

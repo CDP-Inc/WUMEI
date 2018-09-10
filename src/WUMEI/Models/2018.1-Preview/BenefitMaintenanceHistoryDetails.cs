@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WUMEI.Models._2018._1_Preview
 {
@@ -17,7 +15,7 @@ namespace WUMEI.Models._2018._1_Preview
         /// <remarks>
         ///   A code which defines the action to be taken. See Appendix B.1 for values.
         /// </remarks>
-        public string ActionCode { get; set; }
+        public short ActionCode { get; set; }
 
         /// <summary>
         ///   A series of digits appearing on the face of the WIC Card or encoded on the magnetic stripe of a card
@@ -26,7 +24,7 @@ namespace WUMEI.Models._2018._1_Preview
         /// <remarks>
         ///   Mandatory if WicMisAccountID is not present
         /// </remarks>
-        public string CardNumber { get; set; }
+        public ulong? CardNumber { get; set; }
 
         /// <summary>
         ///   WIC MIS assigned identifier for a clinic.
@@ -34,7 +32,7 @@ namespace WUMEI.Models._2018._1_Preview
         /// <remarks>
         ///   Echoed from original message if present
         /// </remarks>
-        public decimal? ClinicId { get; set; }
+        public string ClinicId { get; set; }
 
         /// <summary>
         ///   An identifier assigned to a WIC MIS user that is used to track activity in the system.
@@ -62,7 +60,7 @@ namespace WUMEI.Models._2018._1_Preview
         /// <summary>
         ///   A number that uniquely identifies the transaction.
         /// </summary>
-        public string UniqueTransactionId { get; set; }
+        public long UniqueTransactionId { get; set; }
 
         /// <summary>
         ///   String used to identify user in the WIC EBT System.
@@ -86,12 +84,12 @@ namespace WUMEI.Models._2018._1_Preview
         /// <remarks>
         ///   This is the benefit issuance id range from 0 to 999,999,999,999.
         /// </remarks>
-        public decimal? BenefitIssuanceId { get; set; }
+        public long? BenefitIssuanceId { get; set; }
 
         /// <summary>
         /// Sequence Id
         /// </summary>
-        public int? BenefitIssuanceSequenceId { get; set; }
+        public byte? BenefitIssuanceSequenceId { get; set; }
 
         /// <summary>
         /// Host DateTime

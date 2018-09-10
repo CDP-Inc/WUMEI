@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -33,9 +32,8 @@ namespace WUMEI.Models
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required]
-        [StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardNumber { get; set; }
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong CardNumber { get; set; }
 
         /// <summary>
         /// Month, day and year the cardholder was born expressed in GMT
@@ -67,9 +65,8 @@ namespace WUMEI.Models
         /// <summary>
         /// Phone number for cardholder.
         /// </summary>
-        [StringLength(10)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardholderPhoneNumber { get; set; }
+        [Range(typeof(long), "1000000000", "9999999999")]
+        public long CardholderPhoneNumber { get; set; }
 
         /// <summary>
         /// Reason for an action.

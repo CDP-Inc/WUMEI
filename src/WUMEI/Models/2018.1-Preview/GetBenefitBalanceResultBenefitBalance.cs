@@ -15,9 +15,9 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if requested.
         /// </remarks>
-        [StringLength(20)]
+        [Range(typeof(long), "0", "999999999999")]
         [RegularExpression(CustomRegex.AbcNum)]
-        public string BenefitIssuanceId { get; set; }
+        public long? BenefitIssuanceId { get; set; }
 
         /// <summary>
         /// First date on which benefits may be used, expressed in GMT in accordance with ISO 8601.

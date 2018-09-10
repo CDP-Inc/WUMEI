@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
@@ -21,17 +20,16 @@ namespace WUMEI.Models
         /// <remarks>
         /// Issue, or void.
         /// </remarks>
-        [Required, StringLength(3, MinimumLength = 3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string ActionCode { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "999")]
+        public short ActionCode { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
-        [StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardNumber { get; set; }
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong? CardNumber { get; set; }
 
         /// <summary>
         /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.

@@ -17,8 +17,9 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if message originates from a clinic.
         /// </remarks>
-        [Range(typeof(long), "0", "9999999999")]
-        public long ClinicId { get; set; }
+        [StringLength(10)]
+        [RegularExpression(CustomRegex.AbcNum)]
+        public string ClinicId { get; set; }
 
         /// <summary>
         /// Date and time the originator of the function sends the message or batch expressed in GMT in
@@ -35,7 +36,7 @@ namespace WUMEI.Models
         /// <remarks>Indicates that a message was received and the result of processing the message.</remarks>
         [StringLength(4, MinimumLength = 4)]
         [RegularExpression(CustomRegex.Num)]
-        public string FunctionReturnCode { get; set; }
+        public short FunctionReturnCode { get; set; }
 
         /// <summary>
         /// Text description associated with Function return code.
@@ -67,9 +68,9 @@ namespace WUMEI.Models
         /// <summary>
         /// A value that identifies the function being performed.
         /// </summary>
-        [Required, StringLength(4)]
-        [RegularExpression(CustomRegex.Num)]
-        public string MessageOrFileTypeCode { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "9999")]
+        public short MessageOrFileTypeCode { get; set; }
 
         /// <summary>
         /// A value that identifies which version of a message is being used in a message based system interface.
@@ -98,23 +99,23 @@ namespace WUMEI.Models
         /// <summary>
         /// Value identifying the WIC EBT system.
         /// </summary>
-        [Required, StringLength(3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string WicEbtSystemId { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "999")]
+        public short WicEbtSystemId { get; set; }
 
         /// <summary>
         /// Value identifying  the WIC Management Information System.
         /// </summary>
-        [Required, StringLength(3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string WicMisSystemId { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "999")]
+        public short WicMisSystemId { get; set; }
 
         /// <summary>
         /// Value assigned by FNS to identify the WIC Authority.
         /// </summary>
-        [Required, StringLength(3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string WicStateAgencyId { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "999")]
+        public short WicStateAgencyId { get; set; }
 
         /// <summary>
         /// A value identifying the workstation initiating the function.

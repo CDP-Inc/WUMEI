@@ -9,7 +9,7 @@
         /// <summary>
         /// Gets or sets the function return code for the error encountered.
         /// </summary>
-        public string FunctionReturnCode { get; set; }
+        public short FunctionReturnCode { get; set; }
 
         /// <summary>
         /// Gets or sets the function return text for the error encountered.

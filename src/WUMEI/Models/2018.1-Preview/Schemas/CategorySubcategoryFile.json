@@ -119,9 +119,10 @@
           "errorMessage": "0064"
         },
         "actionCode": {
-          "type": "string",
-          "pattern": "^(002)$",
-          "errorMessage": "0071"
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 2,
+            "errorMessage": "0071"
         },
         "benefitUnitDescription": {
           "type": "string",

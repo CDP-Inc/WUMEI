@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class FoodBenefitBalance
     {
@@ -20,32 +18,32 @@ namespace WUMEI.Models
         /// <summary>
         /// A code identifying the type of product as defined in the National UPC database.
         /// </summary>
-        [Required, StringLength(2)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CategoryCode { get; set; }
+        [Required]
+        [Range(typeof(byte), "0", "99")]
+        public byte CategoryCode { get; set; }
 
         /// <summary>
         /// A literal describing the Category code as specified by the originatiing WIC authority suitable
         /// for printing or displaying in areas where display width is not a concern.
         /// </summary>
         [StringLength(50)]
-        [RegularExpression(CustomRegex.AbcNumSpace)]
+        [RegularExpression(CustomRegex.AbcNumSpecSpace)]
         public string CategoryLongDescription { get; set; }
 
         /// <summary>
         /// A code further identifying the type of product within a Category code
         /// as defined in the National UPC database.
         /// </summary>
-        [Required, StringLength(3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string SubcategoryCode { get; set; }
+        [Required]
+        [Range(typeof(short), "0", "999")]
+        public short SubcategoryCode { get; set; }
 
         /// <summary>
         /// A long description of the Sub-Category code suitable for printing or displaying
         /// in areas where display width is not a concern.
         /// </summary>
         [StringLength(50)]
-        [RegularExpression(CustomRegex.AbcNumSpace)]
+        [RegularExpression(CustomRegex.AbcNumSpecSpace)]
         public string SubcategoryLongDescription { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace WUMEI.Models
         /// Identified entity that obtained the transaction from the WIC Vendor.
         /// </remarks>
         [Range(typeof(long), "0", "99999999999")]
-        public long AcquiringInstitutionIdCode { get; set; }
+        public long? AcquiringInstitutionIdCode { get; set; }
 
         /// <summary>
         /// The amounts deducted from the gross amount of the transaction due to coupons or other reductions
@@ -79,9 +79,9 @@ namespace WUMEI.Models
         /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
-        [Required, StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardNumber { get; set; }
+        [Required]
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong CardNumber { get; set; }
 
         /// <summary>
         /// Date/time when a transaction occurred based on date/time of EBT Card Issuer Processor
@@ -124,7 +124,7 @@ namespace WUMEI.Models
         /// Identifies entity that submitted the transaction for payment.
         /// </remarks>
         [Range(typeof(long), "0", "99999999999")]
-        public long ForwardingInstitutionIdCode { get; set; }
+        public long? ForwardingInstitutionIdCode { get; set; }
 
         /// <summary>
         /// A value indicating the result outcome of the ICC read at the POS.

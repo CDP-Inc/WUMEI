@@ -5,7 +5,7 @@ namespace WUMEI.Models
     /// <summary>
     /// Collection of Detail Records for the Add Update Wic Vendor Batch method.
     /// </summary>
-    public class WicVendorFileDetailRecord
+    public class WicVendorFileRecord
     {
         /// <summary>
         /// Gets or sets an object identifying a record and carrying metadata about it.
@@ -177,7 +177,6 @@ namespace WUMEI.Models
         /// An alternate phone number of a point of contact at the WIC Vendor.
         /// </summary>
         [StringLength(10)]
-        [RegularExpression(CustomRegex.Num)]
         [Range(typeof(long), "0", "9999999999")]
         public long AlternateWicVendorContactPhoneNumber { get; set; }
 

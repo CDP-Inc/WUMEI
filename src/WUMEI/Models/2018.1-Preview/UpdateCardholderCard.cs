@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -21,9 +20,8 @@ namespace WUMEI.Models
         /// Activate, Deactive, etc.
         /// </remarks>
         [Required]
-        [StringLength(3, MinimumLength = 3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string ActionCode { get; set; }
+        [Range(typeof(short), "0", "999")]
+        public short ActionCode { get; set; }
 
         /// <summary>
         /// A constructed data element including the sub-elements Address line 1, Address line 2,
@@ -47,9 +45,8 @@ namespace WUMEI.Models
         /// Original card being replaced.
         /// </remarks>
         [Required]
-        [StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardNumber { get; set; }
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong CardNumber { get; set; }
 
         /// <summary>
         /// A series of digits used to identify the new customer account or relationship.
@@ -57,9 +54,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if replacing card, new card number.
         /// </remarks>
-        [StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string ReplacementCardNumber { get; set; }
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong? ReplacementCardNumber { get; set; }
 
         /// <summary>
         /// Date and time when an action is in effect expressed in GMT in accordance with ISO 8601
@@ -100,9 +96,8 @@ namespace WUMEI.Models
         /// <summary>
         /// Phone number for cardholder.
         /// </summary>
-        [StringLength(10)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardholderPhoneNumber { get; set; }
+        [Range(typeof(long), "1000000000", "9999999999")]
+        public long? CardholderPhoneNumber { get; set; }
 
         /// <summary>
         /// Reason for an action.

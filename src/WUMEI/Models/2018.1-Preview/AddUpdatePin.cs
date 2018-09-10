@@ -17,18 +17,16 @@ namespace WUMEI.Models
         /// A code which defines the action to be taken.
         /// </summary>
         [Required]
-        [StringLength(3, MinimumLength = 3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string ActionCode { get; set; }
+        [Range(typeof(short), "0", "999")]
+        public short ActionCode { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required]
-        [StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardNumber { get; set; }
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong CardNumber { get; set; }
 
         /// <summary>
         /// A number assigned to a cardholder intended to uniquely identify that

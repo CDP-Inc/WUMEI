@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
@@ -21,10 +20,8 @@ namespace WUMEI.Models
         /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
-        [Required]
-        [StringLength(19)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardNumber { get; set; }
+        [Range(typeof(ulong), "0", "9999999999999999999")]
+        public ulong? CardNumber { get; set; }
 
         /// <summary>
         /// A description of the unique relationship of the WIC Cardholder
@@ -93,9 +90,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if the data element was provided in Add Cardholder/Card or Update Card/Cardholder
         /// </remarks>
-        [StringLength(10)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CardholderPhoneNumber { get; set; }
+        [Range(typeof(long), "1000000000", "9999999999")]
+        public long? CardholderPhoneNumber { get; set; }
 
         /// <summary>
         /// A code identifying whether the PIN associated with the card is locked or unlocked.

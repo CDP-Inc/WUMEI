@@ -22,9 +22,8 @@ namespace WUMEI.Models
         /// Activate, Update, Deactive, Hold, etc.
         /// </remarks>
         [Required]
-        [StringLength(3, MinimumLength = 3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string ActionCode { get; set; }
+        [Range(typeof(short), "0", "999")]
+        public short ActionCode { get; set; }
 
         /// <summary>
         /// A constructed data element including the sub-elements Address line 1, Address line 2,
