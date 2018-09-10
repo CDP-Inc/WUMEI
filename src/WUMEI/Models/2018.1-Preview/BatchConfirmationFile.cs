@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WUMEI.Models
 {
@@ -21,6 +18,6 @@ namespace WUMEI.Models
         /// Data elements for the Batch Fonrimation File detail record.
         /// </summary>
         [Required]
-        public IEnumerable<BatchConfirmationFileDetailRecord> DetailRecord { get; set; }
+        public IEnumerable<BatchConfirmationFileDetailRecord> DetailRecords { get; set; }
     }
 }
