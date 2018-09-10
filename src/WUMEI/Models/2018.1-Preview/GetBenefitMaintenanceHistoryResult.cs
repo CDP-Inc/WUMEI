@@ -8,7 +8,7 @@ namespace WUMEI.Models
     /// <summary>
     /// Object that contains all parameters returned for the Get Benefit Maintenance History method.
     /// </summary>
-    public class BenefitMaintenanceHistory
+    public class GetBenefitMaintenanceHistoryResult
     {
         /// <summary>
         /// A constructed data element containing details about the service call and caller.

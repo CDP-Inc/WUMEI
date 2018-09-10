@@ -31,17 +31,15 @@ namespace WUMEI.Models
         /// A code identifying the type of product as defined in the National UPC database.
         /// </summary>
         [Required]
-        [StringLength(2)]
-        [RegularExpression(CustomRegex.Num)]
-        public string CategoryCode { get; set; }
+        [Range(0, 99)]
+        public byte CategoryCode { get; set; }
 
         /// <summary>
         /// A code further identifying the type of product within a Category code
         /// as defined in the National UPC database.
         /// </summary>
         [Required]
-        [StringLength(3)]
-        [RegularExpression(CustomRegex.Num)]
-        public string SubcategoryCode { get; set; }
+        [Range(0, 999)]
+        public short SubcategoryCode { get; set; }
     }
 }

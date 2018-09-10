@@ -18,7 +18,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements Address line 1, Address line 2,
         /// Address city, Address state and Address ZIP code where the card holder receives mail.
         /// </summary>
-        public MailingAddressOp CardholderMailingAddress { get; set; }
+        public CardholderMailingAddress CardholderMailingAddress { get; set; }
 
         /// <summary>
         /// A description of the unique relationship of the WIC Cardholder
@@ -32,7 +32,8 @@ namespace WUMEI.Models
         /// A series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
-        [Required, StringLength(19)]
+        [Required]
+        [StringLength(19)]
         [RegularExpression(CustomRegex.Num)]
         public string CardNumber { get; set; }
 
@@ -61,7 +62,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
         [Required]
-        public ContactName CardholderName { get; set; }
+        public CardholderContactName CardholderName { get; set; }
 
         /// <summary>
         /// Phone number for cardholder.
@@ -86,14 +87,16 @@ namespace WUMEI.Models
         /// <remarks>
         /// Cardholder type (Primary, Secondary, Proxy).
         /// </remarks>
-        [Required, StringLength(1)]
+        [Required]
+        [StringLength(1)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string TypeCode { get; set; }
 
         /// <summary>
         /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
         /// </summary>
-        [Required, StringLength(19, MinimumLength = 2)]
+        [Required]
+        [StringLength(19, MinimumLength = 2)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string WicMisAccountId { get; set; }
     }

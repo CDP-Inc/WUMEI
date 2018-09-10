@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using WUMEI.Models._2018._1_Preview;
 
 namespace WUMEI.Models
 {
@@ -27,19 +28,21 @@ namespace WUMEI.Models
         /// total sales for the WIC Vendor where Y = is above and N = is not above volume.
         /// </summary>
         [Required, StringLength(1, MinimumLength = 1)]
-        [RegularExpression(CustomRegex.AbcNum)]
+        [RegularExpression(CustomRegex.YesNoFlag)]
         public string AboveFiftyPercentVendor { get; set; }
 
         /// <summary>
         /// The ACH cutoff time set by the WIC EBT processor for the WIC Vendor
         /// </summary>
-        public DateTime AchSettlementTime { get; set; }
+        [RegularExpression(CustomRegex.StandardTime)]
+        public string AchSettlementTime { get; set; }
 
         /// <summary>
         /// A code which defines the action to be taken.
         /// </summary>
-        [Required, StringLength(3, MinimumLength = 3)]
-        [RegularExpression(CustomRegex.Num)]
+        [Required]
+        [StringLength(3, MinimumLength = 3)]
+        [RegularExpression(CustomRegex.AddUpdateWicVendorActionCode)]
         public string ActionCode { get; set; }
 
         /// <summary>
@@ -47,40 +50,40 @@ namespace WUMEI.Models
         /// Address city, Address state and Address ZIP code where the Wic Vendor receives mail.
         /// </summary>
         [Required]
-        public MailingAddressRq WicVendorMailingAddress { get; set; }
+        public VendorMailingAddress WicVendorMailingAddress { get; set; }
 
         /// <summary>
         /// A constructed data element including Address line 1, Address line 2, Address City,
         /// Address state and Address ZIP code where the WIC Vendor is physically located.
         /// </summary>
         [Required]
-        public MailingAddressRq WicVendorPhysicalAddress { get; set; }
+        public VendorPhysicalAddress WicVendorPhysicalAddress { get; set; }
 
         /// <summary>
         /// The volume of total food sales reported by the WIC Vendor.
         /// </summary>
         [Range(typeof(decimal), "0.0", "9999999999.99")]
         [RegularExpression(CustomRegex.Price)]
-        public decimal TotalFoodSalesAmount { get; set; }
+        public decimal? TotalFoodSalesAmount { get; set; }
 
         /// <summary>
         /// Identifies the type of APL That is assigned to a vendor and contains only products that
         /// are assigned to the APL type.
         /// </summary>
         [Range(typeof(short), "0", "9999")]
-        public short AplType { get; set; }
+        public short? AplType { get; set; }
 
         /// <summary>
         /// The number identifying the WIC Vendor's bank checking account.
         /// </summary>
         [Range(typeof(long), "0", "99999999999999999")]
-        public long BankAccountNumber { get; set; }
+        public long? BankAccountNumber { get; set; }
 
         /// <summary>
         /// The business entity holding the bank account of the WIC Vendor.
         /// </summary>
         [StringLength(10)]
-        [RegularExpression(CustomRegex.AbcSpecSpace)]
+        [RegularExpression(CustomRegex.AbcNumSpecSpace)]
         public string BankName { get; set; }
 
         /// <summary>
@@ -94,7 +97,7 @@ namespace WUMEI.Models
         /// A unique number assigned to a corporation to which WIC Vendors may be associated.
         /// </summary>
         [Range(typeof(long), "0", "999999999999")]
-        public long CorporationId { get; set; }
+        public long? CorporationId { get; set; }
 
         /// <summary>
         /// The first date the vendor is active and may accept transactions expressed
@@ -104,7 +107,8 @@ namespace WUMEI.Models
         /// First date the Vendor is active and accepting WIC.
         /// Required if a specific future date is to be used.
         /// </remarks>
-        public DateTime BeginVendorDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BeginVendorDate { get; set; }
 
         /// <summary>
         /// Date and time when an action is in effect expressed in GMT in accordance with ISO 8601.
@@ -113,7 +117,8 @@ namespace WUMEI.Models
         /// The date on which the action is to be effective.
         /// Required if a specific future date is to be used.
         /// </remarks>
-        public DateTime EffectiveDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EffectiveDate { get; set; }
 
         /// <summary>
         /// The last date the vendor shall accept WIC expressed in GMT in accordance with ISO 8601.
@@ -121,35 +126,37 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if a specific future date is to be used.
         /// </remarks>
-        public DateTime EndVendorDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EndVendorDate { get; set; }
 
         /// <summary>
         /// A flag indicating whether a WIC Auto-reconcilliation file is generated
         /// for the WIC Vendor location.
         /// </summary>
         [StringLength(1)]
-        [RegularExpression(CustomRegex.Abc)]
+        [RegularExpression(CustomRegex.YesNoFlag)]
         public string DirectConnectAutoReconFlag { get; set; }
 
         /// <summary>
         /// A flag indicating if the WIC Vendor connects directly to the WIC EBT System.
         /// </summary>
         [StringLength(1)]
-        [RegularExpression(CustomRegex.Abc)]
+        [RegularExpression(CustomRegex.YesNoFlag)]
         public string DirectConnectFlag { get; set; }
 
         /// <summary>
         /// Email address of a point of contact at the WIC Vendor location.
         /// </summary>
-        [EmailAddress, StringLength(254)]
-        [RegularExpression(CustomRegex.AbcNumSpace)]
+        [EmailAddress]
+        [StringLength(254)]
+        [RegularExpression(CustomRegex.Email)]
         public string WicVendorContactEmail { get; set; }
 
         /// <summary>
         /// Number assigned by the Supplemental Nutrition Assistance Program (SNAP) to a retail location.
         /// </summary>
         [Range(typeof(long), "0", "99999999999")]
-        public long FnsNumber { get; set; }
+        public long? FnsNumber { get; set; }
 
         /// <summary>
         /// WIC MIS assigned identifier that uniquely identifies a local agency within the WIC State Agency.
@@ -165,7 +172,7 @@ namespace WUMEI.Models
         /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
         /// </summary>
         [Required]
-        public ContactName WicVendorContactName { get; set; }
+        public VendorContactName WicVendorContactName { get; set; }
 
         /// <summary>
         /// An alternate phone number of a point of contact at the WIC Vendor.
@@ -177,7 +184,8 @@ namespace WUMEI.Models
         /// <summary>
         /// The phone number for a point of contact at the WIC Vendor.
         /// </summary>
-        [Required, StringLength(10)]
+        [Required]
+        [StringLength(10)]
         [RegularExpression(CustomRegex.Num)]
         public string WicVendorContactPhoneNumber { get; set; }
 
@@ -187,7 +195,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Default is "V006 - Vendor eligible to be paid".
         /// </remarks>
-        [Required, StringLength(4, MinimumLength = 4)]
+        [Required]
+        [StringLength(4, MinimumLength = 4)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string ReasonCode { get; set; }
 
@@ -197,7 +206,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// WIC Vendor type (Chain, Independent grocer, etc).
         /// </remarks>
-        [Required, StringLength(1)]
+        [Required]
+        [StringLength(1)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string TypeCode { get; set; }
 
@@ -205,7 +215,8 @@ namespace WUMEI.Models
         /// Value assigned by the WIC Management Information System to idenfity the WIC Vendor
         /// equal to WIC merchant ID from X9.93.
         /// </summary>
-        [Required, StringLength(12)]
+        [Required]
+        [StringLength(12)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string WicMisWicVendorId { get; set; }
 
@@ -220,8 +231,7 @@ namespace WUMEI.Models
         /// <summary>
         /// A value identifying the federal and/or state tax identification number assigned to the WIC Vendor.
         /// </summary>
-        [StringLength(9)]
         [Range(typeof(int), "0", "999999999")]
-        public int WicVendorTaxId { get; set; }
+        public int? WicVendorTaxId { get; set; }
     }
 }

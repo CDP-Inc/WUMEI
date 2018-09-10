@@ -16,7 +16,8 @@ namespace WUMEI.Models
         /// <summary>
         /// A code which defines the action to be taken.
         /// </summary>
-        [Required, StringLength(3, MinimumLength = 3)]
+        [Required]
+        [StringLength(3, MinimumLength = 3)]
         [RegularExpression(CustomRegex.Num)]
         public string ActionCode { get; set; }
 
@@ -24,7 +25,8 @@ namespace WUMEI.Models
         /// A series of digits appearing on the face of the WIC Card or encoded on the 
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
-        [Required, StringLength(19)]
+        [Required]
+        [StringLength(19)]
         [RegularExpression(CustomRegex.Num)]
         public string CardNumber { get; set; }
 

@@ -20,7 +20,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Activate, Deactive, etc.
         /// </remarks>
-        [Required, StringLength(3, MinimumLength = 3)]
+        [Required]
+        [StringLength(3, MinimumLength = 3)]
         [RegularExpression(CustomRegex.Num)]
         public string ActionCode { get; set; }
 
@@ -45,7 +46,8 @@ namespace WUMEI.Models
         /// <remarks>
         /// Original card being replaced.
         /// </remarks>
-        [Required, StringLength(19)]
+        [Required]
+        [StringLength(19)]
         [RegularExpression(CustomRegex.Num)]
         public string CardNumber { get; set; }
 
@@ -105,7 +107,8 @@ namespace WUMEI.Models
         /// <summary>
         /// Reason for an action.
         /// </summary>
-        [Required, StringLength(4, MinimumLength = 4)]
+        [Required]
+        [StringLength(4, MinimumLength = 4)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string ReasonCode { get; set; }
 
@@ -127,14 +130,16 @@ namespace WUMEI.Models
         /// <remarks>
         /// Required if changing the Cardholder type (Primary, Secondary, Proxy),
         /// </remarks>
-        [Required, StringLength(1)]
+        [Required]
+        [StringLength(1)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string TypeCode { get; set; }
 
         /// <summary>
         /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
         /// </summary>
-        [Required, StringLength(19, MinimumLength = 2)]
+        [Required]
+        [StringLength(19, MinimumLength = 2)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string WicMisAccountId { get; set; }
     }

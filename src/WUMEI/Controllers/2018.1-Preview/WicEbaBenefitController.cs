@@ -78,12 +78,12 @@ namespace WUMEI.Controllers
         [HttpGet]
         [Consumes("application/json")]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(BenefitMaintenanceHistory), 200)]
+        [ProducesResponseType(typeof(GetBenefitMaintenanceHistoryResult), 200)]
         public IActionResult GetBenefitMaintenanceHistory(
             [FromBody]GetBenefitMaintenanceHistory history
         )
         {
-            return Ok(new BenefitMaintenanceHistory
+            return Ok(new GetBenefitMaintenanceHistoryResult
             {
                 MessageHeader = history.MessageHeader
             });

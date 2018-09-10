@@ -81,7 +81,7 @@ namespace WUMEI.Models
         /// <summary>
         /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
         /// </summary>
-        [Required, StringLength(19, MinimumLength = 2)]
+        [StringLength(19, MinimumLength = 2)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string WicMisAccountId { get; set; }
     }

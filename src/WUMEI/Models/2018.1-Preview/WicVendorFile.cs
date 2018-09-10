@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WUMEI.Models
 {
     /// <summary>
-    /// Object that contains all paremeters required for the Add Update WIC Vendor Batch method.
+    /// Object that contains all parameters required for the Add Update WIC Vendor Batch method.
     /// </summary>
-    public class AddUpdateWicVendorBatch
+    public class WicVendorFile
     {
         /// <summary>
         /// A constructed data element containing details about the service call and caller.
@@ -18,7 +17,6 @@ namespace WUMEI.Models
         /// <summary>
         /// Collection of Detail Records for the Add Update Wic Vendor Batch method.
         /// </summary>
-        [Required]
-        public IEnumerable<AddUpdateWicVendorBatchDetailRecords> DetailRecords { get; set; }
+        public IEnumerable<WicVendorFileDetailRecord> DetailRecords { get; set; }
     }
 }
