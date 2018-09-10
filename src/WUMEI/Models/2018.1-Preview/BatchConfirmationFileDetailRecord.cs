@@ -1,12 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace WUMEI.Models
+﻿namespace WUMEI.Models
 {
     /// <summary>
     /// Object to hold the details for a error found during the processing of a file to be reflected in the
     /// confirmation file.
     /// </summary>
-    public class BatchConfirmationDetailRecord
+    public class BatchConfirmationFileDetailRecord
     {
         /// <summary>
         /// Gets or sets the function return code for the error encountered.
