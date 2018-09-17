@@ -75,7 +75,7 @@ namespace WUMEI.Controllers
         /// </remarks>
         /// <param name="history">Details of the history to be returned.</param>
         /// <response code="200">Returns the updated message header and history details.</response>
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetBenefitMaintenanceHistoryResult), 200)]
@@ -100,7 +100,7 @@ namespace WUMEI.Controllers
         /// </remarks>
         /// <param name="history">Details of the history to be returned.</param>
         /// <response code="200">Returns the updated message header and history details.</response>
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetBenefitRedemptionHistoryResult), 200)]

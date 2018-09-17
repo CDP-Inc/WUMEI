@@ -17,6 +17,6 @@ namespace WUMEI.Models
         /// <summary>
         /// Collection of Detail Records for the Add Update Wic Vendor Batch method.
         /// </summary>
-        public IEnumerable<WicVendorFileDetailRecord> DetailRecords { get; set; }
+        public IEnumerable<WicVendorFileRecord> DetailRecords { get; set; }
     }
 }
