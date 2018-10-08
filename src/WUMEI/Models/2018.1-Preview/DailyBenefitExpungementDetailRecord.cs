@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WUMEI.Models._2018._1_Preview
 {
-    internal class DailyBenefitExpungementDetailRecord
+    public class DailyBenefitExpungementDetailRecord
     {
         /// <summary>
         ///   Gets or sets the quantity of an item defined in the specified benefit issuance unit of measure

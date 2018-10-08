@@ -8,7 +8,7 @@ namespace WUMEI.Models
     /// <summary>
     ///  A data object which represents a record in the WUMEI benefit purge file
     /// </summary>
-    internal class DailyBenefitExpungementRecord
+    public class DailyBenefitExpungementRecord
     {
         /// <summary>
         /// Gets or sets an object identifying a record and carrying metadata about it.

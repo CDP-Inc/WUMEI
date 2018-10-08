@@ -9,7 +9,7 @@ namespace WUMEI.Models
     /// <summary>
     ///  A data object which represents a deserialized WUMEI benefit purge file
     /// </summary>
-    internal class DailyBenefitExpungementFile
+    public class DailyBenefitExpungementFile
     {
         /// <summary>
         /// Gets or sets the data from the batch file header
