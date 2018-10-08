@@ -214,7 +214,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(BatchConfirmationFile), 200)]
         public IActionResult ReportWicBenefitsPurged(
-            [FromBody]ReportWicBenefitsPurged benefits
+            [FromBody]DailyBenefitExpungementFile benefits
         )
         {
             return Ok(new BatchConfirmationFile());
