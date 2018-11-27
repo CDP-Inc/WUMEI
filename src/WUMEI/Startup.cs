@@ -83,7 +83,7 @@ namespace WUMEI
                 {
                     foreach (var description in provider.ApiVersionDescriptions)
                     {
-                        options.SwaggerEndpoint($"/WUMEISample/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                         options.SupportedSubmitMethods(new SubmitMethod[] { });
                     }
                 }
