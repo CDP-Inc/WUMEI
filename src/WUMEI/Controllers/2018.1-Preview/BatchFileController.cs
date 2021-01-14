@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WUMEI.Models;
+using WUMEI.Models.V2018;
 
-namespace WUMEI.Controllers
+namespace WUMEI.Controllers.V2018
 {
     /// <summary>
     /// The Batch file functional area comprises functions used for the transfer of bulk data between the WIC MIS
     /// and WIC EBT system and to synchronize data stored in separate locations. This may be a two-way data flow,
     /// with some transfers being initiated by the WIC MIS and others by the WIC EBT system.
     /// </summary>
-    [ApiVersion("2018.1-Preview")]
+    [ApiVersion("2018.1-Preview", Deprecated = true)]
     [Route("WUMEISample/{version:apiVersion}/[controller]/[action]")]
     public class BatchFileController : Controller
     {
@@ -193,7 +193,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(BatchConfirmationFile), 200)]
         public IActionResult ReportWicBenefitRedemptions(
-            [FromBody]ReportWicBenefitRedemptions benefits
+            [FromBody]BenefitRedemptionFile benefits
         )
         {
             return Ok(new BatchConfirmationFile());
@@ -298,7 +298,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(BatchConfirmationFile), 200)]
         public IActionResult ReportAchPayments(
-            [FromBody]ReportAchPayments ach
+            [FromBody]ReportAchPaymentFile ach
         )
         {
             return Ok(new BatchConfirmationFile());
@@ -318,7 +318,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(BatchConfirmationFile), 200)]
         public IActionResult ReportRecoupmentRequests(
-            [FromBody]ReportRecoupmentRequests recoupment
+            [FromBody]RecoupmentRequestsFile recoupment
         )
         {
             return Ok(new BatchConfirmationFile());

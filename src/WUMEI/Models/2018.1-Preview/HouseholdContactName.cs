@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models._2018._1_Preview
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains fields for Contact Names when they are optional.
@@ -12,33 +8,33 @@ namespace WUMEI.Models._2018._1_Preview
     public class HouseholdContactName
     {
         /// <summary>
-        /// Sub-element of name data elements identifying the first name of the person specified.
+        /// Gets or sets a sub-element of name data elements identifying the first name of the person specified.
         /// </summary>
         [Required]
-        [StringLength(20)]
+        [StringLength(50)]
         [RegularExpression(CustomRegex.AbcNumSpecSpaceNameAndAddress)]
-        public string FirstName { get; set; }
+        public virtual string FirstName { get; set; }
 
         /// <summary>
-        /// Sub-element of name data elements identifying the middle initial of the person specified.
+        /// Gets or sets a sub-element of name data elements identifying the middle initial of the person specified.
         /// </summary>
         [StringLength(1)]
         [RegularExpression(CustomRegex.AbcNumSpecSpaceNameAndAddress)]
-        public string MiddleInitial { get; set; }
+        public virtual string MiddleInitial { get; set; }
 
         /// <summary>
-        /// Sub-element of name data elements identifying the last name of the person specified.
+        /// Gets or sets a sub-element of name data elements identifying the last name of the person specified.
         /// </summary>
         [Required]
-        [StringLength(20)]
+        [StringLength(50)]
         [RegularExpression(CustomRegex.AbcNumSpecSpaceNameAndAddress)]
-        public string LastName { get; set; }
+        public virtual string LastName { get; set; }
 
         /// <summary>
-        /// Sub-element of name data elements identifying the suffix of the person specified.
+        /// Gets or sets a sub-element of name data elements identifying the suffix of the person specified.
         /// </summary>
         [StringLength(6)]
         [RegularExpression(CustomRegex.AbcNumSpecSpaceNameAndAddress)]
-        public string NameSuffix { get; set; }
+        public virtual string NameSuffix { get; set; }
     }
 }

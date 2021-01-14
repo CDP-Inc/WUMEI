@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace WUMEI.Models
+﻿namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// The following data elements shall be included in each batch system interface at the file level.

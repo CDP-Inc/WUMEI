@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters required for the Add Card Holder or Card method.
@@ -8,89 +8,86 @@ namespace WUMEI.Models
     public class AddCardholderCard
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2,
-        /// Address city, Address state and Address ZIP code where the card holder receives mail.
+        /// Gets or sets a constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Address city, Address state and Address ZIP code where the household receives mail.
         /// </summary>
         public CardholderMailingAddress CardholderMailingAddress { get; set; }
 
         /// <summary>
-        /// A description of the unique relationship of the WIC Cardholder
-        /// to an account to an account or the WIC Participant.
+        /// Gets or sets a value indicating the cardholder relationship.
         /// </summary>
         [StringLength(30)]
         [RegularExpression(CustomRegex.AbcNumSpecSpace)]
         public string CardholderRelationship { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the
+        /// Gets or sets a series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required]
-        [Range(typeof(ulong), "0", "9999999999999999999")]
+        [Range(typeof(ulong), "1000000000000000", "9999999999999999999")]
         public ulong CardNumber { get; set; }
 
         /// <summary>
-        /// Month, day and year the cardholder was born expressed in GMT
-        /// in accordance with ISO 8601.
+        /// Gets or sets month, day, and year the card holder was born expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [RegularExpression(CustomRegex.StandardDate)]
         public string CardholderDateOfBirth { get; set; }
 
         /// <summary>
-        /// A value indicating whether the person being identified is male or female.
+        /// Gets or sets a value indicating whether the person being identified is male or female.
         /// </summary>
-        [StringLength(1)]
-        [RegularExpression(CustomRegex.Abc)]
+        [StringLength(1, MinimumLength = 1)]
+        [RegularExpression(CustomRegex.Gender)]
         public string Gender { get; set; }
 
         /// <summary>
-        /// A code indicating the preferred language spoken by the person identified.
+        /// Gets or sets a code indicating the preferred language spoken by the person identified.
         /// </summary>
-        [StringLength(3)]
+        [StringLength(3, MinimumLength = 3)]
         [RegularExpression(CustomRegex.Abc)]
         public string LanguageCode { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
+        /// Gets or sets a constructed data element including the sub-elements first name, middle initial,
+        /// last name and suffix.
         /// </summary>
         [Required]
         public CardholderContactName CardholderName { get; set; }
 
         /// <summary>
-        /// Phone number for cardholder.
+        /// Gets or sets the cardholder's phone number.
         /// </summary>
         [Range(typeof(long), "1000000000", "9999999999")]
-        public long CardholderPhoneNumber { get; set; }
+        public long? CardholderPhoneNumber { get; set; }
 
         /// <summary>
-        /// Reason for an action.
+        /// Gets or sets the reason for an action.
         /// </summary>
         /// <remarks>
-        /// Default is "C007 - Issued".
+        /// Required by the spec to be equal to "C007" if provided.
         /// </remarks>
         [StringLength(4, MinimumLength = 4)]
-        [RegularExpression(CustomRegex.AbcNum)]
+        [RegularExpression(CustomRegex.AddCardholderReasonCode)]
         public string ReasonCode { get; set; }
 
         /// <summary>
-        /// A code indicating the kind of entity being acted or reported upon in the function.
+        /// Gets or sets a code indicating the kind of entity being acted or reported upon in the function.
         /// </summary>
-        /// <remarks>
-        /// Cardholder type (Primary, Secondary, Proxy).
-        /// </remarks>
         [Required]
         [StringLength(1)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string TypeCode { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
+        /// Gets or sets the value assigned by the WIC MIS to identify an account for a WIC participant,
+        /// economic unit or household.
         /// </summary>
         [Required]
         [StringLength(19, MinimumLength = 2)]

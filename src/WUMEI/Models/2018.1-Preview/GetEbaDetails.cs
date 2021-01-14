@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters required for the Get EBA Details method.
@@ -9,13 +8,13 @@ namespace WUMEI.Models
     public class GetEbaDetails
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A code indicating the kind of entity being acted or reported upon in the function.
+        /// Gets or sets a code indicating the kind of entity being acted or reported upon in the function.
         /// </summary>
         /// <remarks>
         /// WIC MIS Account type, default "Household".
@@ -25,7 +24,8 @@ namespace WUMEI.Models
         public string TypeCode { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
+        /// Gets or sets a value assigned by the WIC MIS to identify an account for a WIC participant,
+        /// economic unit or household.
         /// </summary>
         [Required]
         [StringLength(19, MinimumLength = 2)]

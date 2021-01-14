@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Data element containing elements that are repeated for each UPC/PLU data data element where there is
@@ -9,7 +9,7 @@ namespace WUMEI.Models
     public class NtePriceAndWicVendorPeerGroupId
     {
         /// <summary>
-        /// The maximum allowed price for a food item as established by the WIC State Agency.
+        /// Gets or sets the maximum allowed price for a food item as established by the WIC State Agency.
         /// </summary>
         /// <remarks>
         /// Required when data initially provided.
@@ -19,7 +19,7 @@ namespace WUMEI.Models
         public decimal NtePrice { get; set; }
 
         /// <summary>
-        /// An identifier assigned to a set of vendors defined by the
+        /// Gets or sets an identifier assigned to a set of vendors defined by the
         /// WIC State Agency for managing cost containment.
         /// </summary>
         [Required]

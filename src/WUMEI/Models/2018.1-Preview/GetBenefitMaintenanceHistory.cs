@@ -1,45 +1,46 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
-    /// The Get Benefit Maintenance History function is a required function that uses a message based system
-    ///interface to retrieve benefit maintenance transaction data for a particular EBA.
+    /// The input model from the GetBenefitMaintenanceHistory function.
     /// </summary>
     public class GetBenefitMaintenanceHistory
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the
+        /// Gets or sets a series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         /// <remarks>
         /// Required if WIC MIS account ID not present.
         /// </remarks>
-        [Range(typeof(ulong), "0", "9999999999999999999")]
+        [Range(typeof(ulong), "1000000000000000", "9999999999999999999")]
         public ulong? CardNumber { get; set; }
 
         /// <summary>
-        /// Beginning of period being referenced for this function expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets the beginning of period being referenced for this function expressed in GMT
+        /// in accordance with ISO 8601.
         /// </summary>
         [Required]
         [RegularExpression(CustomRegex.StandardDate)]
         public string BeginRequestDate { get; set; }
 
         /// <summary>
-        /// End of period being referenced for this function expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets the end of period being referenced for this function expressed in GMT
+        /// in accordance with ISO 8601.
         /// </summary>
         [Required]
         [RegularExpression(CustomRegex.StandardDate)]
         public string EndRequestDate { get; set; }
 
         /// <summary>
-        /// A code indicating the kind of entity being acted or reported upon in the function.
+        /// Gets or sets a code indicating the kind of entity being acted or reported upon in the function.
         /// </summary>
         /// <remarks>
         /// Used to request specific types of maintenance (Add, Void, Purged).
@@ -49,7 +50,8 @@ namespace WUMEI.Models
         public string TypeCode { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
+        /// Gets or sets a value assigned by the WIC MIS to identify an account for a WIC participant,
+        /// economic unit or household.
         /// </summary>
         /// <remarks>
         /// Required if Card number not present.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Data model for individual results in <see cref="RecoupmentStatusFile"/>
@@ -63,7 +63,7 @@ namespace WUMEI.Models
         public decimal RecoupmentReversedAmount { get; set; }
 
         /// <summary>
-        /// Gets or sets the discrepancy between a snapshot balance of recoupments and the amount calculated from the
+        /// Gets or sets the discrepancy between a snapshot balance of recoupment and the amount calculated from the
         /// WIC Direct audit trail.
         /// </summary>
         [Required]
@@ -87,10 +87,11 @@ namespace WUMEI.Models
         /// CCYYMMDD.
         /// </remarks>
         [Required]
-        public DateTime RecoupmentActivityDate { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string RecoupmentActivityDate { get; set; }
 
         /// <summary>
-        /// Gets or sets value assigned by the WIC Management Information System to idenfity the WIC Vendor
+        /// Gets or sets value assigned by the WIC Management Information System to identify the WIC Vendor
         /// equal to WIC merchant ID from X9.93.
         /// </summary>
         [Required, StringLength(12)]

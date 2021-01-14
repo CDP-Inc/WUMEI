@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WUMEI.Models;
+using WUMEI.Models.V2018;
 
-namespace WUMEI.Controllers
+namespace WUMEI.Controllers.V2018
 {
     /// <summary>
     /// The Warehouse Authorization functional area comprised functions geared toward generating and removing
@@ -11,7 +11,7 @@ namespace WUMEI.Controllers
     /// Since the cardholder is not present when a warehouse fulfills an order, an alternative to PIN entry
     /// is required to maintain the integrity of the transaction.
     /// </remarks>
-    [ApiVersion("2018.1-Preview")]
+    [ApiVersion("2018.1-Preview", Deprecated = true)]
     [Route("WUMEISample/{version:apiVersion}/[controller]/[action]")]
     public class WarehouseAuthorizationController : Controller
     {
@@ -22,7 +22,7 @@ namespace WUMEI.Controllers
         /// </summary>
         /// <param name="auth"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(RequestWarehouseAuthorizationResult), 200)]
@@ -67,7 +67,7 @@ namespace WUMEI.Controllers
         /// </remarks>
         /// <param name="auth"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetWarehouseAuthorizationsResult), 200)]
@@ -87,7 +87,7 @@ namespace WUMEI.Controllers
         /// </summary>
         /// <param name="auth"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetWarehouseAuthorizationCodeResult), 200)]

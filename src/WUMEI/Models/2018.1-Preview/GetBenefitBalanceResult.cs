@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters returned for the Get Benefit Balance method.
@@ -10,13 +9,13 @@ namespace WUMEI.Models
     public class GetBenefitBalanceResult
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
+        /// Gets or sets a value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
         /// </summary>
         /// <remarks>
         /// Required if not sent in request.
@@ -26,7 +25,7 @@ namespace WUMEI.Models
         public string WicMisAccountId { get; set; }
 
         /// <summary>
-        /// Data object containing elements that are repeated for each WIC MIS account ID.
+        /// Gets or sets a data object containing elements that are repeated for each WIC MIS account ID.
         /// </summary>
         [Required]
         public IEnumerable<GetBenefitBalanceResultBenefitBalance> BenefitBalance { get; set; }

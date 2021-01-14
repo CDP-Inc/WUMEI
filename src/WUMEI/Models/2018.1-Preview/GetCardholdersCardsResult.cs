@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all the parameters returned for the Get Cardholders / Cards method.
@@ -16,7 +15,7 @@ namespace WUMEI.Models
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// Data object containing elements that are repeated for each card number
+        /// Data object containing elements that are repeated for each card number.
         /// </summary>
         [Required]
         public IList<GetCardholdersCardsResultCardholderCard> CardholderCards { get; set; }

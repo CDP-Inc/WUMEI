@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Data element that contains all sub-elements that are repeated and returned for each matching authorization
@@ -10,7 +10,7 @@ namespace WUMEI.Models
     public class WarehouseAuthorizations
     {
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// Gets or sets a series of digits appearing on the face of the WIC Card or encoded on the 
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required, StringLength(19)]
@@ -18,19 +18,19 @@ namespace WUMEI.Models
         public string CardNumber { get; set; }
 
         /// <summary>
-        /// First date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets first date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
         public DateTime BeginBenefitDate { get; set; }
 
         /// <summary>
-        /// Last date on which benefits may be used expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets last date on which benefits may be used expressed in GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
         public DateTime EndBenefitDate { get; set; }
 
         /// <summary>
-        /// Information identifying the UPC or PLU assigned to a food item;
+        /// Gets or sets information identifying the UPC or PLU assigned to a food item;
         /// see Technical Implementation Guide for formatting.
         /// </summary>
         /// <remarks>
@@ -41,21 +41,21 @@ namespace WUMEI.Models
         public string UpcPluData { get; set; }
 
         /// <summary>
-        /// Indicate the number of significant digits in the UPC or PLU
+        /// Gets or sets a value to indicate the number of significant digits in the UPC or PLU
         /// </summary>
         [Required]
         [Range(typeof(byte), "0", "15")]
         public byte UpcPluDataLength { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
+        /// Gets or sets value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
         /// </summary>
         [Required, StringLength(19, MinimumLength = 2)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string WicMisAccountId { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC Management Information System to idenfity the WIC Vendor
+        /// Gets or sets value assigned by the WIC Management Information System to idenfity the WIC Vendor
         /// equal to WIC merchant ID from X9.93.
         /// </summary>
         [Required, StringLength(12)]
@@ -63,7 +63,7 @@ namespace WUMEI.Models
         public string WicMisWicVendorId { get; set; }
 
         /// <summary>
-        /// The quantity of a given product that has been authorized but not yet redeemed.
+        /// Gets or sets the quantity of a given product that has been authorized but not yet redeemed.
         /// </summary>
         /// <remarks>
         /// Depleted authorizations are returned.
@@ -74,7 +74,7 @@ namespace WUMEI.Models
         public decimal AvailableAuthorizationQuantity { get; set; }
 
         /// <summary>
-        /// The aggregate quantity of a given product that was originally authorized.
+        /// Gets or sets the aggregate quantity of a given product that was originally authorized.
         /// </summary>
         /// <remarks>
         /// Sum of all requests.

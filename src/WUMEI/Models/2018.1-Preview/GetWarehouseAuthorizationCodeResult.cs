@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters that are returned for the Get Warehouse Authorization Code method.
@@ -8,20 +8,20 @@ namespace WUMEI.Models
     public class GetWarehouseAuthorizationCodeResult
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// Code to be presented in redemptions against warehouse authorizations.
+        /// Gets or sets a code to be presented in redemptions against warehouse authorizations.
         /// </summary>
         [Required, StringLength(4)]
         [RegularExpression(CustomRegex.Num)]
         public string AuthorizationCode { get; set; }
 
         /// <summary>
-        /// The quantity of products that have been requested by a warehouse vendor for the purpose of
+        /// Gets or sets the quantity of products that have been requested by a warehouse vendor for the purpose of
         /// a warehouse authorization.
         /// </summary>
         /// <remarks>
@@ -33,7 +33,7 @@ namespace WUMEI.Models
         public decimal AuthorizationQuantity { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// Gets or sets a series of digits appearing on the face of the WIC Card or encoded on the 
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         /// <remarks>

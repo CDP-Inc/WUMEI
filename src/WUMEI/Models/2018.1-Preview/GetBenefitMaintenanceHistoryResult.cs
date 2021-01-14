@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using WUMEI.Models._2018._1_Preview;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
-    /// Object that contains all parameters returned for the Get Benefit Maintenance History method.
+    /// Objects of this class will hold the results of GetBenefitMaintenanceResut method
     /// </summary>
     public class GetBenefitMaintenanceHistoryResult
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets the constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// History Details
+        /// Gets or sets the list of benefit maintenance history transactions.
         /// </summary>
-        public List<BenefitMaintenanceHistoryDetails> BenefitHistoryDetails { get; set; }
+        public List<BenefitMaintenanceHistoryTransaction> BenefitHistoryTransactions { get; set; }
     }
 }

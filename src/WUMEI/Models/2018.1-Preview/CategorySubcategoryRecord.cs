@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object which provides a deserialization target for the JSON data in a category/subcategory file record.
@@ -119,7 +119,7 @@ namespace WUMEI.Models
         /// From the subcategory description data element in the UPC/PLU data file.
         /// </remarks>
         [Required]
-        [StringLength(20, MinimumLength = 1)]
+        [StringLength(24, MinimumLength = 1)]
         [RegularExpression(CustomRegex.AbcNumSpecSpace)]
         public string SubcategoryShortDescription { get; set; }
     }

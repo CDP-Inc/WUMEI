@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Collection of Detail Records for the Update WIC Vendor Status Batch method.
@@ -9,7 +9,12 @@ namespace WUMEI.Models
     public class UpdateWicVendorStatusBatchDetailRecords
     {
         /// <summary>
-        /// A code which defines the action to be taken.
+        /// Gets or sets an object identifying a record and carrying metadata about it.
+        /// </summary>
+        public BatchRecordHeader RecordHeader { get; set; }
+
+        /// <summary>
+        /// Gets or sets a code which defines the action to be taken.
         /// </summary>
         /// <remarks>
         /// Update, Hold, Deactive, or Reactivate.
@@ -19,7 +24,7 @@ namespace WUMEI.Models
         public string ActionCode { get; set; }
 
         /// <summary>
-        /// Date and time when an action is in effect expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets date and time when an action is in effect expressed in GMT in accordance with ISO 8601.
         /// </summary>
         /// <remarks>
         /// Required if a specific future date is to be used.
@@ -27,14 +32,14 @@ namespace WUMEI.Models
         public DateTime EffectiveDate { get; set; }
 
         /// <summary>
-        /// Reason for an action.
+        /// Gets or sets reason for an action.
         /// </summary>
         [Required, StringLength(4, MinimumLength = 4)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string ReasonCode { get; set; }
 
         /// <summary>
-        /// A code indicating the status of the entity indicated.
+        /// Gets or sets a code indicating the status of the entity indicated.
         /// </summary>
         /// <remarks>
         /// New status code (Activated, On hold).
@@ -44,7 +49,7 @@ namespace WUMEI.Models
         public string StatusCode { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC Management Information System to idenfity the WIC Vendor
+        /// Gets or sets value assigned by the WIC Management Information System to idenfity the WIC Vendor
         /// equal to WIC merchant ID from X9.93.
         /// </summary>
         [Required, StringLength(12)]

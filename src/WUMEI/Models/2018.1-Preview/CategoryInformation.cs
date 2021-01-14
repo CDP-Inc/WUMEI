@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Data elements containing information for Subcategories that is returned when the
@@ -13,14 +10,14 @@ namespace WUMEI.Models
     public class CategoryInformation
     {
         /// <summary>
-        /// A code identifying the type of product as defined in the National UPC database.
+        /// Gets or sets a code identifying the type of product as defined in the National UPC database.
         /// </summary>
         [Required, StringLength(2)]
         [RegularExpression(CustomRegex.Num)]
         public string CategoryCode { get; set; }
 
         /// <summary>
-        /// A literal describing the Category code as specified by the originatiing WIC authority suitable
+        /// Gets or sets a literal describing the Category code as specified by the originating WIC authority suitable
         /// for printing or displaying in areas where display width is not a concern.
         /// </summary>
         [Required, StringLength(50)]
@@ -28,15 +25,15 @@ namespace WUMEI.Models
         public string CategoryLongDescription { get; set; }
 
         /// <summary>
-        /// A short literal describing the Category code suitable for displaying on screen and reports where
-        /// display of width is a concern.
+        /// Gets or sets a short literal describing the Category code suitable for displaying on screen and reports
+        /// where display of width is a concern.
         /// </summary>
         [Required, StringLength(20)]
         [RegularExpression(CustomRegex.AbcNumSpace)]
         public string CategoryShortDescription { get; set; }
 
         /// <summary>
-        /// The date for which the Category code
+        /// Gets or sets the date for which the Category code
         /// shall become available for use expressed
         /// in GMT in accordance with ISO 8601.
         /// </summary>
@@ -44,7 +41,7 @@ namespace WUMEI.Models
         public DateTime BeginCategoryDate { get; set; }
 
         /// <summary>
-        /// The last date for which the Category code
+        /// Gets or sets the last date for which the Category code
         /// shall be used expressed in GMT in 
         /// accordance with ISO 8601.
         /// </summary>

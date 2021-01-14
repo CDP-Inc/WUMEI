@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters required for the Get EBA Details method response.
@@ -9,22 +8,23 @@ namespace WUMEI.Models
     public class GetEbaDetailsResult
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Gets or sets a constructed data element including the sub-elements Address line 1, Address line 2,
         /// Address city, Address state and Address ZIP code where the household receives mail.
         /// </summary>
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
         /// </remarks>
-        public MailingAddressOp HouseholdMailingAddress { get; set; }
+        public HouseholdMailingAddress HouseholdMailingAddress { get; set; }
 
         /// <summary>
-        /// Month, day and year the head of household was born expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets month, day and year the head of household was born expressed in GMT in accordance
+        /// with ISO 8601.
         /// </summary>
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
@@ -33,7 +33,7 @@ namespace WUMEI.Models
         public string DateOfBirth { get; set; }
 
         /// <summary>
-        /// A value indicating whether the person being identified is male or female.
+        /// Gets or sets a value indicating whether the person being identified is male or female.
         /// </summary>
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
@@ -43,7 +43,7 @@ namespace WUMEI.Models
         public string Gender { get; set; }
 
         /// <summary>
-        /// A code indicating the preferred language spoken by the person identified.
+        /// Gets or sets a code indicating the preferred language spoken by the person identified.
         /// </summary>
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
@@ -53,15 +53,16 @@ namespace WUMEI.Models
         public string LanguageCode { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
+        /// Gets or sets a constructed data element including the sub-elements first name, middle initial,
+        /// last name and suffix.
         /// </summary>
         /// <remarks>
         /// Required if provided when the EBA was added or updated.
         /// </remarks>
-        public ContactName HeadOfHouseholdName { get; set; }
+        public ContactNameOp HeadOfHouseholdName { get; set; }
 
         /// <summary>
-        /// A code indicating the status of the entity indicated.
+        /// Gets or sets a code indicating the status of the entity indicated.
         /// </summary>
         /// <remarks>Indicates result, Activated, Deactivated, etc</remarks>
         [Required, StringLength(4, MinimumLength = 4)]
@@ -69,14 +70,15 @@ namespace WUMEI.Models
         public string StatusCode { get; set; }
 
         /// <summary>
-        /// A code indicating the kind of entity being acted or reported upon in the function.
+        /// Gets or sets a code indicating the kind of entity being acted or reported upon in the function.
         /// </summary>
         [Required, StringLength(1)]
         [RegularExpression(CustomRegex.AbcNum)]
         public string TypeCode { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
+        /// Gets or sets a value assigned by the WIC MIS to identify an account for a WIC participant,
+        /// economic unit or household.
         /// </summary>
         [Required, StringLength(19, MinimumLength = 2)]
         [RegularExpression(CustomRegex.AbcNum)]

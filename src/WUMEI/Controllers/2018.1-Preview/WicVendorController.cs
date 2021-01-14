@@ -1,22 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WUMEI.Models;
+using WUMEI.Models.V2018;
 
-namespace WUMEI.Controllers
+namespace WUMEI.Controllers.V2018
 {
     /// <summary>
-    /// The WIC Vendor Maintenance functional area provides functions for maintaining WIC Vendor information, 
+    /// The WIC Vendor Maintenance functional area provides functions for maintaining WIC Vendor information,
     /// including banking information that is needed by the WIC EBT System.
     /// </summary>
-    [ApiVersion("2018.1-Preview")]
+    [ApiVersion("2018.1-Preview", Deprecated = true)]
     [Route("WUMEISample/{version:apiVersion}/[controller]/[action]")]
     public class WicVendorController : Controller
     {
         /// <summary>
-        /// The Add or Update WIC Vendor function is a required function that uses a message or batch based 
+        /// The Add or Update WIC Vendor function is a required function that uses a message or batch based
         /// system interface to establish or modify WIC Vendor information in the WIC EBT System.
         /// </summary>
-        /// <param name="vendor"></param>
-        /// <returns></returns>
+        /// <param name="vendor">
+        /// Details the vendor to be added or updated.
+        /// </param>
+        /// <response code="200">Returns the updated message header and status code.</response>
         [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -32,7 +34,7 @@ namespace WUMEI.Controllers
         }
 
         /// <summary>
-        /// The Add or Update WIC Vendor Hierarchy Information function is an optional function that uses a 
+        /// The Add or Update WIC Vendor Hierarchy Information function is an optional function that uses a
         /// message or batch system interface to create and update the WIC EBT system’s WIC Vendor corporate
         /// levels of information.
         /// </summary>
@@ -43,7 +45,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(MessageHeader), 200)]
         public IActionResult AddUpdateWicVendorHierarchyInformation(
-            [FromBody]AddUpdateWicVendorHierarchyInformation hierarchy
+            [FromBody] AddUpdateWicVendorHierarchyInformation hierarchy
             )
         {
             return Ok(hierarchy.MessageHeader);
@@ -60,15 +62,15 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(MessageHeader), 200)]
         public IActionResult UpdateWicVendorStatus(
-            [FromBody]UpdateWicVendorStatus vendor
+            [FromBody] UpdateWicVendorStatus vendor
         )
         {
             return Ok(vendor.MessageHeader);
         }
 
         /// <summary>
-        /// The Update WIC Vendor Banking Information function is an optional function that uses a message or 
-        /// batch based system interface to add, change or delete banking information for a WIC Vendor in the WIC 
+        /// The Update WIC Vendor Banking Information function is an optional function that uses a message or
+        /// batch based system interface to add, change or delete banking information for a WIC Vendor in the WIC
         /// EBT system.
         /// </summary>
         /// <param name="vendor"></param>
@@ -78,7 +80,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(MessageHeader), 200)]
         public IActionResult UpdateWicVendorBankingInformation(
-            [FromBody]UpdateWicVendorBankingInformation vendor
+            [FromBody] UpdateWicVendorBankingInformation vendor
         )
         {
             return Ok(vendor.MessageHeader);

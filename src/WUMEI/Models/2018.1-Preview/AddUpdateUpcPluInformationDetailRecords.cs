@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Collection of Detail Records for the Add Update UPC PLU Information method.
@@ -10,7 +9,12 @@ namespace WUMEI.Models
     public class AddUpdateUpcPluInformationDetailRecords
     {
         /// <summary>
-        /// A code which defines the action to be taken.
+        /// Gets or sets an object identifying a record and carrying metadata about it.
+        /// </summary>
+        public BatchRecordHeader RecordHeader { get; set; }
+
+        /// <summary>
+        /// Gets or sets a code which defines the action to be taken.
         /// </summary>
         /// <remarks>
         /// Add or Update.
@@ -20,15 +24,15 @@ namespace WUMEI.Models
         public string ActionCode { get; set; }
 
         /// <summary>
-        /// The quantity of a food item returned that maps to our exchange size.
+        /// Gets or sets the quantity of a food item returned that maps to our exchange size.
         /// </summary>
         [Required]
         [Range(typeof(decimal), "0.0", "999.99")]
-        [RegularExpression(CustomRegex.Num)]
+        [RegularExpression(CustomRegex.DecimalNum)]
         public decimal BenefitQuantity { get; set; }
 
         /// <summary>
-        /// Text description of the originator's specified benefit issuance unit of measure
+        /// Gets or sets the text description of the originator's specified benefit issuance unit of measure
         /// e.g. can, pkg, jar
         /// </summary>
         /// <remarks>
@@ -36,50 +40,52 @@ namespace WUMEI.Models
         /// </remarks>
         [StringLength(50)]
         [RegularExpression(CustomRegex.AbcNumSpec)]
-        public string BenefitUnitDescription { get; set; }
+        public virtual string BenefitUnitDescription { get; set; }
 
         /// <summary>
-        /// A code identifying the type of product as defined in the National UPC database.
+        /// Gets or sets a code identifying the type of product as defined in the National UPC database.
         /// </summary>
         [Required, StringLength(2)]
         [RegularExpression(CustomRegex.Num)]
         public string CategoryCode { get; set; }
 
         /// <summary>
-        /// The date for which the UPC/PLU data shall
+        /// Gets or sets the date for which the UPC/PLU data shall
         /// become available for use expressed in
         /// GMT in accordance with ISO 8601.
         /// </summary>
         /// <remarks>
         /// Required if a future date is to be used.
         /// </remarks>
-        public DateTime BeginUpcPluData { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string BeginUpcPluData { get; set; }
 
         /// <summary>
-        /// The last date for which the UPC/PLU data shall be used expressed in GMT in
+        /// Gets or sets the last date for which the UPC/PLU data shall be used expressed in GMT in
         /// accordance with ISO 8601.
         /// </summary>
         /// <remarks>
         /// Required if a future date is to be used.
         /// </remarks>
-        public DateTime EndUpcPluData { get; set; }
+        [RegularExpression(CustomRegex.StandardDate)]
+        public string EndUpcPluData { get; set; }
 
         /// <summary>
-        /// A name for a WIC food item.
+        /// Gets or sets a name for a WIC food item.
         /// </summary>
         [Required, StringLength(50)]
         [RegularExpression(CustomRegex.AbcNumSpace)]
         public string ItemDescription { get; set; }
 
         /// <summary>
-        /// A flag indicating if a food item is allowed
+        /// Gets or sets a flag indicating if a food item is allowed
         /// for purchase with a manual voucher.
         /// </summary>
         [Range(typeof(byte), "0", "1")]
         public byte ManualVoucherIndicator { get; set; }
 
         /// <summary>
-        /// Identifies level to be used for calculation of NTE.
+        /// Gets or sets the level to be used for calculation of NTE.
         /// </summary>
         /// <remarks>
         /// Required if provided in Add or Update UPC/PLU Information.
@@ -90,30 +96,30 @@ namespace WUMEI.Models
         public string NteCalculationIndicator { get; set; }
 
         /// <summary>
-        /// Number of iterations of APL type in the UPC/PLU record.
+        /// Gets or sets the number of iterations of APL type in the UPC/PLU record.
         /// </summary>
         [Range(typeof(short), "0", "9999")]
-        public short NumberOfAplTypes { get; set; }
+        public virtual short NumberOfAplTypes { get; set; }
 
         /// <summary>
-        /// Number of iterations of WIC Vendor peer groups and NTE prices for those groups.
+        /// Gets or sets the number of iterations of WIC Vendor peer groups and NTE prices for those groups.
         /// </summary>
         /// <remarks>
         /// Identifies how many WIC Vendor peer group IDs are included in the repeating section below.
         /// </remarks>
         [Required]
         [Range(typeof(byte), "0", "99")]
-        public byte NumberOfWicVendorPeerGroups { get; set; }
+        public virtual byte NumberOfWicVendorPeerGroups { get; set; }
 
         /// <summary>
-        /// The size of the contents of the package quantified in the standard benefit units of measure.
+        /// Gets or sets the size of the contents of the package quantified in the standard benefit units of measure.
         /// </summary>
         [Range(typeof(decimal), "0.0", "999.99")]
         [RegularExpression(CustomRegex.Price)]
         public decimal PackageSize { get; set; }
 
         /// <summary>
-        /// A code indicating the kind of price being sent in the record.
+        /// Gets or sets a code indicating the kind of price being sent in the record.
         /// X9.93:1 for values.
         /// </summary>
         [Required, StringLength(2, MinimumLength = 2)]
@@ -121,7 +127,7 @@ namespace WUMEI.Models
         public string PriceType { get; set; }
 
         /// <summary>
-        /// A flag indicating a food item that can be purchased with benefits assigned in a
+        /// Gets or sets a flag indicating a food item that can be purchased with benefits assigned in a
         /// non-zero Sub-Category code(any Subcategory code that is not equal to “000”)
         /// as well as with benefits assigned in the Broadband Sub-Category code.
         /// </summary>
@@ -130,7 +136,7 @@ namespace WUMEI.Models
         public byte PurchaseIndicator { get; set; }
 
         /// <summary>
-        /// A flag indicating that a food item is eligible for rebate to the WIC State Agency.
+        /// Gets or sets a flag indicating that a food item is eligible for rebate to the WIC State Agency.
         /// </summary>
         /// <remarks>
         /// Identifies whether a food item is eligible for manufacturer rebates;
@@ -141,7 +147,7 @@ namespace WUMEI.Models
         public byte RebateFlag { get; set; }
 
         /// <summary>
-        /// A code further identifying the type of product within a Category code 
+        /// Gets or sets a code further identifying the type of product within a Category code 
         /// as defined in the National UPC database.
         /// </summary>
         [Required, StringLength(3)]
@@ -149,7 +155,7 @@ namespace WUMEI.Models
         public string SubcategoryCode { get; set; }
 
         /// <summary>
-        /// Information identifying the UPC or PLU assigned to a food item;
+        /// Gets or sets the information identifying the UPC or PLU assigned to a food item;
         /// see Technical Implementation Guide for formatting.
         /// </summary>
         /// <remarks>
@@ -160,23 +166,23 @@ namespace WUMEI.Models
         public string UpcPluData { get; set; }
 
         /// <summary>
-        /// Indicate the number of significant digits in the UPC or PLU
+        /// Gets or sets the number of significant digits in the UPC or PLU
         /// </summary>
         [Required]
         [Range(typeof(byte), "0", "15")]
         public byte UpcPluDataLength { get; set; }
 
         /// <summary>
-        /// Constructed data element containing elements repetaed for each UPC/PLU data data element where an
-        /// NTE price is provided.
+        /// Gets or sets a constructed data element containing elements repetaed for each
+        /// UPC/PLU data data element where an NTE price is provided.
         /// </summary>
         [Required]
-        public IEnumerable<NtePriceAndWicVendorPeerGroupId> NtePriceWicVendorPeerGroupIdAplType { get; set; }
+        public virtual IEnumerable<NtePriceAndWicVendorPeerGroupId> NtePriceWicVendorPeerGroupId { get; set; }
 
         /// <summary>
-        /// Identifies the type of APL That is assigned to a vendor and contains only products that
+        /// Gets or sets the type of APL That is assigned to a vendor and contains only products that
         /// are assigned to the APL type. Is repeated for each UPC/PLU data data element.
         /// </summary>
-        public AplTypes AplType { get; set; }
+        public IEnumerable<AplTypes> AplTypes { get; set; }
     }
 }

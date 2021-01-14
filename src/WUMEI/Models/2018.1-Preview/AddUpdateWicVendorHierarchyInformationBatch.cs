@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters for the Add Update Wic Vendor Hierarchy Information Batch method.
@@ -10,13 +9,14 @@ namespace WUMEI.Models
     public class AddUpdateWicVendorHierarchyInformationBatch
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public BatchHeader BatchHeader { get; set; }
 
         /// <summary>
-        /// Collection of Detail Records for the Add Update WIC Vendor Hierarchy Information Batch method.
+        /// Gets or sets a collection of Detail Records for the
+        /// Add Update WIC Vendor Hierarchy Information Batch method.
         /// </summary>
         [Required]
         public IEnumerable<AddUpdateWicVendorHierarchyInformationBatchDetailRecords> DetailRecords { get; set; }

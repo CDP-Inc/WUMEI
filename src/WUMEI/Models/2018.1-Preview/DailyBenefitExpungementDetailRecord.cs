@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WUMEI.Models._2018._1_Preview
+﻿namespace WUMEI.Models.V2018
 {
     public class DailyBenefitExpungementDetailRecord
     {
         /// <summary>
-        ///   Gets or sets the quantity of an item defined in the specified benefit issuance unit of measure
+        /// Gets or sets the quantity of an item defined in the specified benefit issuance unit of measure
         /// </summary>
         /// <remarks>
-        ///   This is a required field and accepts values in the range 0.00 and 999.99 (decimal (3,2))
+        /// This is a required field and accepts values in the range 0.00 and 999.99 (decimal (3,2))
         /// </remarks>
         public decimal BenefitQuantity { get; set; }
 

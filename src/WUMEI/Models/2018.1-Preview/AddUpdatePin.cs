@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters required for the Add Update Pin method.
@@ -8,28 +8,29 @@ namespace WUMEI.Models
     public class AddUpdatePin
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A code which defines the action to be taken.
+        /// Gets or sets a code which defines the action to be taken.
         /// </summary>
         [Required]
-        [Range(typeof(short), "0", "999")]
-        public short ActionCode { get; set; }
+        [StringLength(3, MinimumLength = 3)]
+        [RegularExpression(CustomRegex.Num)]
+        public string ActionCode { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the
+        /// Gets or sets a series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         [Required]
-        [Range(typeof(ulong), "0", "9999999999999999999")]
+        [Range(typeof(ulong), "1000000000000000", "9999999999999999999")]
         public ulong CardNumber { get; set; }
 
         /// <summary>
-        /// A number assigned to a cardholder intended to uniquely identify that
+        /// Gets or sets a number assigned to a cardholder intended to uniquely identify that
         /// cardholder at the point of service; encrypted block.
         /// </summary>
         /// <remarks>

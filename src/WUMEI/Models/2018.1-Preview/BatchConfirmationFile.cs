@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
-    /// Object that contains all parameters required for the Batch Confirmation File method.
+    /// An object that contains all parameters required for the Batch Confirmation File method.
     /// </summary>
     public class BatchConfirmationFile
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public BatchConfirmationHeader BatchConfirmationHeader { get; set; }
 
         /// <summary>
-        /// Data elements for the Batch Fonrimation File detail record.
+        /// Gets or sets data elements for the Batch Confirmation File detail record.
         /// </summary>
         [Required]
-        public IEnumerable<BatchConfirmationFileDetailRecord> DetailRecords { get; set; }
+        public IEnumerable<BatchConfirmationDetailRecord> DetailRecords { get; set; }
     }
 }

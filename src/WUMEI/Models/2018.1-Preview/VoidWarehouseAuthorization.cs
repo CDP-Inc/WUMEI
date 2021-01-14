@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters required for the Void Warehouse Authorization method.
@@ -9,13 +9,13 @@ namespace WUMEI.Models
     public class VoidWarehouseAuthorization
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A series of digits appearing on the face of the WIC Card or encoded on the 
+        /// Gets or sets a series of digits appearing on the face of the WIC Card or encoded on the
         /// magnetic stripe of a card or assigned to a SmartCard.
         /// </summary>
         /// <remarks>
@@ -26,7 +26,7 @@ namespace WUMEI.Models
         public string CardNumber { get; set; }
 
         /// <summary>
-        /// First date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets first date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
         /// </summary>
         /// <remarks>
         /// Begin date of the benefit that will be utilized in the redemption.
@@ -35,7 +35,7 @@ namespace WUMEI.Models
         public DateTime BeginBenefitDate { get; set; }
 
         /// <summary>
-        /// Last date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets last date on which benefits may be used, expressed in GMT in accordance with ISO 8601.
         /// </summary>
         /// <remarks>
         /// End date of the benefit that will be utilized in the redemption.
@@ -44,7 +44,7 @@ namespace WUMEI.Models
         public DateTime EndBenefitDate { get; set; }
 
         /// <summary>
-        /// Information identifying the UPC or PLU assigned to a food item;
+        /// Gets or sets information identifying the UPC or PLU assigned to a food item;
         /// see Technical Implementation Guide for formatting.
         /// </summary>
         /// <remarks>
@@ -55,14 +55,14 @@ namespace WUMEI.Models
         public string UpcPluData { get; set; }
 
         /// <summary>
-        /// Indicate the number of significant digits in the UPC or PLU
+        /// Gets or sets indicate the number of significant digits in the UPC or PLU
         /// </summary>
         [Required]
         [Range(typeof(byte), "0", "15")]
         public byte UpcPluDataLength { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
+        /// Gets or sets value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
         /// </summary>
         /// <remarks>
         /// Required if Card number not present.
@@ -72,7 +72,7 @@ namespace WUMEI.Models
         public string WicMisAccountId { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC Management Information System to idenfity the WIC Vendor
+        /// Gets or sets value assigned by the WIC Management Information System to identify the WIC Vendor
         /// equal to WIC merchant ID from X9.93.
         /// </summary>
         /// <remarks>

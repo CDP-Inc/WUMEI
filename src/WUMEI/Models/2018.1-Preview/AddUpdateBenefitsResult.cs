@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters that are returned for the Add Update Benefits method.
@@ -9,13 +8,13 @@ namespace WUMEI.Models
     public class AddUpdateBenefitsResult
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// A code indicating the status of the entity indicated.
+        /// Gets or sets a code indicating the status of the entity indicated.
         /// </summary>
         /// <remarks>
         /// Indicates result, Activated, Deactivated, etc

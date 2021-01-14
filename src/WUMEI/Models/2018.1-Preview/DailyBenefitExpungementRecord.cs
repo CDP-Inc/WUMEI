@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using WUMEI.Models._2018._1_Preview;
+﻿using System.Collections.Generic;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     ///  A data object which represents a record in the WUMEI benefit purge file

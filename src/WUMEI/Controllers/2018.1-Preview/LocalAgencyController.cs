@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WUMEI.Models;
+using WUMEI.Models.V2018;
 
-namespace WUMEI.Controllers
+namespace WUMEI.Controllers.V2018
 {
     /// <summary>
     /// The Local Agency Maintenance functional area comprises functions for creating and updating local agency information needed by the WIC EBT System for reporting purposes.
     /// </summary>
-    [ApiVersion("2018.1-Preview")]
+    [ApiVersion("2018.1-Preview", Deprecated = true)]
     [Route("WUMEISample/{version:apiVersion}/[controller]/[action]")]
     public class LocalAgencyController : Controller
     {

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WUMEI.Models;
+using WUMEI.Models.V2018;
 
-namespace WUMEI.Controllers
+namespace WUMEI.Controllers.V2018
 {
     /// <summary>
     /// The WIC EBA Account Maintenance functional area comprises functions for maintaining an
     /// Electronic Benefit Account (EBA) in the WIC EBT System.
     /// </summary>
-    [ApiVersion("2018.1-Preview")]
+    [ApiVersion("2018.1-Preview", Deprecated = true)]
     [Route("WUMEISample/{version:apiVersion}/[controller]/[action]")]
     public class WicEbaAccountController : Controller
     {
@@ -67,7 +67,7 @@ namespace WUMEI.Controllers
         /// </summary>
         /// <remarks>
         /// This function allows a WIC MIS user the ability to have EBA information displayed via a WIC MIS screen.
-        /// The WIC EBT System shall identify the EBA and return the household data information available.
+        /// The WIC EBT system shall identify the EBA and return the household data information available.
         /// </remarks>
         /// <param name="input">Details of the EBA to be returned.</param>
         /// <response code="200">Returns the updated message header and EBA details.</response>
@@ -76,8 +76,7 @@ namespace WUMEI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetEbaDetailsResult), 200)]
         public IActionResult GetEbaDetails(
-            [FromBody]GetEbaDetails input
-        )
+            [FromBody]GetEbaDetails input)
         {
             return Ok(new GetEbaDetailsResult
             {
@@ -92,12 +91,12 @@ namespace WUMEI.Controllers
         /// </summary>
         /// <param name="eba">Details of the EBA to be returned.</param>
         /// <response code="200">Returns the updated message header and EBA details.</response>
-        [HttpGet]
+        [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(GetEbaUsingCardNumberResult), 200)]
         public IActionResult GetEbaUsingCardNumber(
-            [FromBody]GetEbaUsingCardNumber eba
+            [FromBody] GetEbaUsingCardNumber eba
         )
         {
             return Ok(new GetEbaUsingCardNumberResult

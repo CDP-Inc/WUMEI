@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters returned for the Void Warehouse Authorization Result method.
@@ -12,13 +8,13 @@ namespace WUMEI.Models
     public class VoidWarehouseAuthorizationResult
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// The quantity of products that have been requested by a warehouse vendor for the purpose of
+        /// Gets or sets the quantity of products that have been requested by a warehouse vendor for the purpose of
         /// a warehouse authorization.
         /// </summary>
         /// <remarks>

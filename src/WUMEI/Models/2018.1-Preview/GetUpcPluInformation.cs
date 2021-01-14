@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Object that contains all parameters required for the Get UPC/PLU Information method.
@@ -8,13 +8,13 @@ namespace WUMEI.Models
     public class GetUpcPluInformation
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// Information identifying the UPC or PLU assigned to a food item;
+        /// Gets or sets information identifying the UPC or PLU assigned to a food item;
         /// see Technical Implementation Guide for formatting.
         /// </summary>
         /// <remarks>
@@ -26,7 +26,7 @@ namespace WUMEI.Models
         public string UpcPluData { get; set; }
 
         /// <summary>
-        /// Indicate the number of significant digits in the UPC or PLU
+        /// Gets or sets a value to indicate the number of significant digits in the UPC or PLU
         /// </summary>
         [Required]
         [Range(typeof(byte), "0", "15")]

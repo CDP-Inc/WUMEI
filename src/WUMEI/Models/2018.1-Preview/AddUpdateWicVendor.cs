@@ -1,104 +1,107 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WUMEI.Models._2018._1_Preview;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
-    /// Object that contains all paremeters required for the Add Update WIC Vendor method.
+    /// Object that contains all parameters required for the Add Update WIC Vendor method.
     /// </summary>
     public class AddUpdateWicVendor
     {
         /// <summary>
-        /// A constructed data element containing details about the service call and caller.
+        /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
-        public MessageHeader MessageHeader { get; set; }
+        public virtual MessageHeader MessageHeader { get; set; }
 
         /// <summary>
-        /// The number that identifies the financial institution to which a WIC Vendor is paid
+        /// Gets or sets the number that identifies the financial institution to which a WIC Vendor is paid
         /// via ACH and conforms to the American Bankers Association standard.
         /// </summary>
         [StringLength(9, MinimumLength = 9)]
         [RegularExpression(CustomRegex.Num)]
-        public string AbaRoutingTransitNumber { get; set; }
+        public virtual string AbaRoutingTransitNumber { get; set; }
 
         /// <summary>
-        /// A flag indicating whether or not the volume of WIC sales is above 50% of the
+        /// Gets or sets a flag indicating whether or not the volume of WIC sales is above 50% of the
         /// total sales for the WIC Vendor where Y = is above and N = is not above volume.
         /// </summary>
-        [Required, StringLength(1, MinimumLength = 1)]
+        [Required]
+        [StringLength(1, MinimumLength = 1)]
         [RegularExpression(CustomRegex.YesNoFlag)]
-        public string AboveFiftyPercentVendor { get; set; }
+        public virtual string AboveFiftyPercentVendor { get; set; }
 
         /// <summary>
-        /// The ACH cutoff time set by the WIC EBT processor for the WIC Vendor
+        /// Gets or sets the ACH cutoff time set by the WIC EBT processor for the WIC Vendor
         /// </summary>
         [RegularExpression(CustomRegex.StandardTime)]
-        public string AchSettlementTime { get; set; }
+        public virtual string AchSettlementTime { get; set; }
 
         /// <summary>
-        /// A code which defines the action to be taken.
+        /// Gets or sets a code which defines the action to be taken.
         /// </summary>
         [Required]
-        [Range(typeof(short), "0", "999")]
-        public short ActionCode { get; set; }
+        [StringLength(3, MinimumLength = 3)]
+        [RegularExpression(CustomRegex.Num)]
+        public virtual string ActionCode { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements Address line 1, Address line 2,
+        /// Gets or sets a constructed data element including the sub-elements Address line 1, Address line 2,
         /// Address city, Address state and Address ZIP code where the Wic Vendor receives mail.
         /// </summary>
         [Required]
-        public VendorMailingAddress WicVendorMailingAddress { get; set; }
+        public virtual VendorMailingAddress WicVendorMailingAddress { get; set; }
 
         /// <summary>
-        /// A constructed data element including Address line 1, Address line 2, Address City,
+        /// Gets or sets a constructed data element including Address line 1, Address line 2, Address City,
         /// Address state and Address ZIP code where the WIC Vendor is physically located.
         /// </summary>
         [Required]
-        public VendorPhysicalAddress WicVendorPhysicalAddress { get; set; }
+        public virtual VendorPhysicalAddress WicVendorPhysicalAddress { get; set; }
 
         /// <summary>
-        /// The volume of total food sales reported by the WIC Vendor.
+        /// Gets or sets the volume of total food sales reported by the WIC Vendor.
         /// </summary>
         [Range(typeof(decimal), "0.0", "9999999999.99")]
-        [RegularExpression(CustomRegex.Price)]
-        public decimal? TotalFoodSalesAmount { get; set; }
+        [RegularExpression(CustomRegex.DecimalNum)]
+        public virtual decimal? TotalFoodSalesAmount { get; set; }
 
         /// <summary>
-        /// Identifies the type of APL That is assigned to a vendor and contains only products that
+        /// Gets or sets the type of APL That is assigned to a vendor and contains only products that
         /// are assigned to the APL type.
         /// </summary>
         [Range(typeof(short), "0", "9999")]
-        public short? AplType { get; set; }
+        public virtual short? AplType { get; set; }
 
         /// <summary>
-        /// The number identifying the WIC Vendor's bank checking account.
+        /// Gets or sets the number identifying the WIC Vendor's bank checking account.
         /// </summary>
-        [Range(typeof(long), "0", "99999999999999999")]
-        public long? BankAccountNumber { get; set; }
+        [StringLength(17)]
+        [RegularExpression(CustomRegex.Num)]
+        public virtual string BankAccountNumber { get; set; }
 
         /// <summary>
-        /// The business entity holding the bank account of the WIC Vendor.
+        /// Gets or sets the business entity holding the bank account of the WIC Vendor.
         /// </summary>
         [StringLength(10)]
         [RegularExpression(CustomRegex.AbcNumSpecSpace)]
-        public string BankName { get; set; }
+        public virtual string BankName { get; set; }
 
         /// <summary>
-        /// Business name of the WIC Vendor.
+        /// Gets or sets the business name of the WIC Vendor.
         /// </summary>
-        [Required, StringLength(50)]
+        [Required]
+        [StringLength(50)]
         [RegularExpression(CustomRegex.AbcNumSpecSpace)]
-        public string WicVendorBusinessName { get; set; }
+        public virtual string WicVendorBusinessName { get; set; }
 
         /// <summary>
-        /// A unique number assigned to a corporation to which WIC Vendors may be associated.
+        /// Gets or sets a unique number assigned to a corporation to which WIC Vendors may be associated.
         /// </summary>
         [Range(typeof(long), "0", "999999999999")]
-        public long? CorporationId { get; set; }
+        public virtual long? CorporationId { get; set; }
 
         /// <summary>
-        /// The first date the vendor is active and may accept transactions expressed
+        /// Gets or sets the first date the vendor is active and may accept transactions expressed
         /// in GMT in accordance with ISO 8601.
         /// </summary>
         /// <remarks>
@@ -106,87 +109,89 @@ namespace WUMEI.Models
         /// Required if a specific future date is to be used.
         /// </remarks>
         [RegularExpression(CustomRegex.StandardDate)]
-        public string BeginVendorDate { get; set; }
+        public virtual string BeginVendorDate { get; set; }
 
         /// <summary>
-        /// Date and time when an action is in effect expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets date and time when an action is in effect expressed in GMT in accordance with ISO 8601.
         /// </summary>
         /// <remarks>
         /// The date on which the action is to be effective.
         /// Required if a specific future date is to be used.
         /// </remarks>
         [RegularExpression(CustomRegex.StandardDate)]
-        public string EffectiveDate { get; set; }
+        public virtual string EffectiveDate { get; set; }
 
         /// <summary>
-        /// The last date the vendor shall accept WIC expressed in GMT in accordance with ISO 8601.
+        /// Gets or sets the last date the vendor shall accept WIC expressed in GMT in accordance with ISO 8601.
         /// </summary>
         /// <remarks>
         /// Required if a specific future date is to be used.
         /// </remarks>
         [RegularExpression(CustomRegex.StandardDate)]
-        public string EndVendorDate { get; set; }
+        public virtual string EndVendorDate { get; set; }
 
         /// <summary>
-        /// A flag indicating whether a WIC Auto-reconcilliation file is generated
+        /// Gets or sets a flag indicating whether a WIC Auto-reconciliation file is generated
         /// for the WIC Vendor location.
         /// </summary>
         [StringLength(1)]
         [RegularExpression(CustomRegex.YesNoFlag)]
-        public string DirectConnectAutoReconFlag { get; set; }
+        public virtual string DirectConnectAutoReconFlag { get; set; }
 
         /// <summary>
-        /// A flag indicating if the WIC Vendor connects directly to the WIC EBT System.
+        /// Gets or sets a flag indicating if the WIC Vendor connects directly to the WIC EBT System.
         /// </summary>
         [StringLength(1)]
         [RegularExpression(CustomRegex.YesNoFlag)]
-        public string DirectConnectFlag { get; set; }
+        public virtual string DirectConnectFlag { get; set; }
 
         /// <summary>
-        /// Email address of a point of contact at the WIC Vendor location.
+        /// Gets or sets the email address of a point of contact at the WIC Vendor location.
         /// </summary>
         [EmailAddress]
         [StringLength(254)]
         [RegularExpression(CustomRegex.Email)]
-        public string WicVendorContactEmail { get; set; }
+        public virtual string WicVendorContactEmail { get; set; }
 
         /// <summary>
-        /// Number assigned by the Supplemental Nutrition Assistance Program (SNAP) to a retail location.
+        /// Gets or sets a number assigned by the Supplemental Nutrition Assistance Program (SNAP) to a retail location.
         /// </summary>
         [Range(typeof(long), "0", "99999999999")]
-        public long? FnsNumber { get; set; }
+        public virtual long? FnsNumber { get; set; }
 
         /// <summary>
-        /// WIC MIS assigned identifier that uniquely identifies a local agency within the WIC State Agency.
+        /// Gets or sets a WIC MIS assigned identifier that uniquely identifies a local agency within the
+        /// WIC State Agency.
         /// </summary>
         /// <remarks>
         /// Agency contracting with WIC Vendor.
         /// </remarks>
         [StringLength(10)]
         [RegularExpression(CustomRegex.AbcNum)]
-        public string LocalAgencyId { get; set; }
+        public virtual string LocalAgencyId { get; set; }
 
         /// <summary>
-        /// A constructed data element including the sub-elements first name, middle initial, last name and suffix.
+        /// Gets or sets a constructed data element including the sub-elements first name, middle initial,
+        /// last name and suffix.
         /// </summary>
         [Required]
-        public VendorContactName WicVendorContactName { get; set; }
+        public virtual VendorContactName WicVendorContactName { get; set; }
 
         /// <summary>
-        /// An alternate phone number of a point of contact at the WIC Vendor.
+        /// Gets or sets an alternate phone number of a point of contact at the WIC Vendor.
         /// </summary>
         [Range(typeof(long), "1000000000", "9999999999")]
-        public long? AlternateWicVendorContactPhoneNumber { get; set; }
+        public virtual long? AlternateWicVendorContactPhoneNumber { get; set; }
 
         /// <summary>
-        /// The phone number for a point of contact at the WIC Vendor.
+        /// Gets or sets the phone number for a point of contact at the WIC Vendor.
         /// </summary>
         [Required]
         [Range(typeof(long), "1000000000", "9999999999")]
-        public long WicVendorContactPhoneNumber { get; set; }
+        public virtual long WicVendorContactPhoneNumber { get; set; }
 
         /// <summary>
-        /// Reason for an action.
+        /// Gets or sets the reason for an action.
         /// </summary>
         /// <remarks>
         /// Default is "V006 - Vendor eligible to be paid".
@@ -194,40 +199,41 @@ namespace WUMEI.Models
         [Required]
         [StringLength(4, MinimumLength = 4)]
         [RegularExpression(CustomRegex.AbcNum)]
-        public string ReasonCode { get; set; }
+        public virtual string ReasonCode { get; set; }
 
         /// <summary>
-        /// A code indicating the kind of entity being acted or reported upon in the function.
+        /// Gets or sets a code indicating the kind of entity being acted or reported upon in the function.
         /// </summary>
         /// <remarks>
         /// WIC Vendor type (Chain, Independent grocer, etc).
         /// </remarks>
         [Required]
         [StringLength(1)]
-        [RegularExpression(CustomRegex.AbcNum)]
-        public string TypeCode { get; set; }
+        [RegularExpression(CustomRegex.Valid2018VendorTypesRegex)]
+        public virtual string TypeCode { get; set; }
 
         /// <summary>
-        /// Value assigned by the WIC Management Information System to idenfity the WIC Vendor
+        /// Gets or sets a value assigned by the WIC Management Information System to identify the WIC Vendor
         /// equal to WIC merchant ID from X9.93.
         /// </summary>
         [Required]
         [StringLength(12)]
         [RegularExpression(CustomRegex.AbcNum)]
-        public string WicMisWicVendorId { get; set; }
+        public virtual string WicMisWicVendorId { get; set; }
 
         /// <summary>
-        /// An identifier assigned to a set of vendors defined by the
+        /// Gets or sets an identifier assigned to a set of vendors defined by the
         /// WIC State Agency for managing cost containment.
         /// </summary>
         [Required]
         [Range(typeof(int), "0", "99999")]
-        public int WicVendorPeerGroupId { get; set; }
+        public virtual int WicVendorPeerGroupId { get; set; }
 
         /// <summary>
-        /// A value identifying the federal and/or state tax identification number assigned to the WIC Vendor.
+        /// Gets or sets a value identifying the federal and/or state tax identification number assigned to the WIC Vendor.
         /// </summary>
-        [Range(typeof(int), "0", "999999999")]
-        public int? WicVendorTaxId { get; set; }
+        [StringLength(9, MinimumLength = 9)]
+        [RegularExpression(CustomRegex.Num)]
+        public virtual string WicVendorTaxId { get; set; }
     }
 }

@@ -1,13 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Collection of Data Records for the Update WIC Vendor Banking Information Batch method.
     /// </summary>
     public class UpdateWicVendorBankingInformationBatchDetailRecords
     {
+        /// <summary>
+        /// Gets or sets an object identifying a record and carrying metadata about it.
+        /// </summary>
+        public BatchRecordHeader RecordHeader { get; set; }
+
         /// <summary>
         /// The number that identifies the financial institution to which a WIC Vendor is paid
         /// via ACH and conforms to the American Bankers Association standard.
@@ -33,7 +38,7 @@ namespace WUMEI.Models
         /// </summary>
         [StringLength(10)]
         [RegularExpression(CustomRegex.AbcSpecSpace)]
-        public string BankName { get; set; }
+        public virtual string BankName { get; set; }
 
         /// <summary>
         /// The number identifying the WIC Vendor's bank checking account.

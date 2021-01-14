@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
-namespace WUMEI.Models
+namespace WUMEI.Models.V2018
 {
     /// <summary>
     /// Data element containing needed repeated data for each Benefit issuance ID or date range.
@@ -10,8 +10,8 @@ namespace WUMEI.Models
     public class GetBenefitBalanceResultFoodBenefitBalance
     {
         /// <summary>
-        /// The quantity of a food item defined in the sender's specified benefit issuance unit of measure in
-        /// active hold at a WIC Vendor for manual voucher authorization.
+        /// Gets or sets the quantity of a food item defined in the sender's specified benefit issuance unit of 
+        /// measure in active hold at a WIC Vendor for manual voucher authorization.
         /// </summary>
         [Required]
         [Range(typeof(decimal), "0.0", "999.99")]
@@ -19,7 +19,7 @@ namespace WUMEI.Models
         public decimal BenefitQuantityActiveHold { get; set; }
 
         /// <summary>
-        /// The quantity of a food item defined in the sender's specified benefit issuance unit
+        /// Gets or sets the quantity of a food item defined in the sender's specified benefit issuance unit
         /// of measure available for purchase.
         /// </summary>
         [Required]
@@ -28,18 +28,29 @@ namespace WUMEI.Models
         public decimal BenefitQuantityAvailable { get; set; }
 
         /// <summary>
-        /// A code identifying the type of product as defined in the National UPC database.
+        /// Gets or sets a code identifying the type of product as defined in the National UPC database.
         /// </summary>
         [Required]
         [Range(0, 99)]
-        public byte CategoryCode { get; set; }
+        public string CategoryCode { get; set; }
 
         /// <summary>
-        /// A code further identifying the type of product within a Category code
+        /// Gets or sets a code further identifying the type of product within a Category code
         /// as defined in the National UPC database.
         /// </summary>
         [Required]
         [Range(0, 999)]
-        public short SubcategoryCode { get; set; }
+        public string SubcategoryCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date and time that the benefit record was created
+        /// </summary>
+        /// <remarks>
+        /// This will be used for determining which benefit was issued first so that we know which to decrease
+        /// first while processing the benefit balance for a smart card.
+        /// NOTE: This property will not be returned in the result.
+        /// </remarks>
+        [JsonIgnore]
+        public DateTime SetupDate { get; set; }
     }
 }

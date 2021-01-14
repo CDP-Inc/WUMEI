@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace WUMEI
@@ -36,18 +39,18 @@ namespace WUMEI
         /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore().AddVersionedApiExplorer(
+            services.AddVersionedApiExplorer(
                options =>
                {
                    options.GroupNameFormat = "VVV";
                    options.SubstituteApiVersionInUrl = true;
                }
             );
-            services.AddMvc();
             services.AddApiVersioning(
                 options =>
                 {
                     options.ReportApiVersions = true;
+                    options.UseApiBehavior = false;
                 }
             );
             services.AddSwaggerGen(
@@ -60,6 +63,7 @@ namespace WUMEI
                     }
                     options.OperationFilter<SwaggerDefaultValues>();
                     options.IncludeXmlComments(XmlCommentsFilePath);
+                    options.CustomSchemaIds(t => t.FullName);
                 }
             );
         }
@@ -81,9 +85,11 @@ namespace WUMEI
             app.UseSwaggerUI(
                 options =>
                 {
-                    foreach (var description in provider.ApiVersionDescriptions)
+                    foreach (var description in provider.ApiVersionDescriptions
+                        .OrderByDescending(x => x.ApiVersion.MajorVersion.GetValueOrDefault()))
                     {
-                        options.SwaggerEndpoint($"/WUMEISample/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                        options.SwaggerEndpoint($"/WUMEISample/swagger/{description.GroupName}/swagger.json",
+                            description.GroupName.ToUpperInvariant());
                         options.SupportedSubmitMethods(new SubmitMethod[] { });
                     }
                 }
@@ -91,7 +97,7 @@ namespace WUMEI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         static string XmlCommentsFilePath
         {
@@ -104,22 +110,18 @@ namespace WUMEI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="description"></param>
         /// <returns></returns>
-        static Info CreateInfoForApiVersion(ApiVersionDescription description)
+        static OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
         {
-            var info = new Info()
+            var info = new OpenApiInfo()
             {
                 Title = $"WIC Universal MIS-EBT Interface API {description.ApiVersion}",
-                Description = "API for the latest version of the WUMEI.",
+                Description = $"API for the {description.ApiVersion} version of the WUMEI.",
                 Version = description.ApiVersion.ToString()
             };
-            if (description.IsDeprecated)
-            {
-                info.Description += " This API version has been deprecated.";
-            }
             return info;
         }
     }
