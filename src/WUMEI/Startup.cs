@@ -66,6 +66,7 @@ namespace WUMEI
                     options.CustomSchemaIds(t => t.FullName);
                 }
             );
+            services.AddSwaggerGenNewtonsoftSupport();
         }
 
         /// <summary>
