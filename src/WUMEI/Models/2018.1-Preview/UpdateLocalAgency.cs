@@ -16,6 +16,16 @@ namespace WUMEI.Models.V2018
         public MessageHeader MessageHeader { get; set; }
 
         /// <summary>
+        /// Gets or sets a code which defines the action to be taken.
+        /// </summary>
+        /// <remarks>
+        /// Update or Deactivate.
+        /// </remarks>
+        [Required]
+        [StringLength(3, MinimumLength = 3)]
+        [RegularExpression(CustomRegex.Num)]
+        public string ActionCode { get; set; }
+        /// <summary>
         /// Gets or sets a constructed data element including the sub-elements Address line 1, Address line 2,
         /// Address city, Address state and Address ZIP code where the Local Agency receives mail.
         /// </summary>

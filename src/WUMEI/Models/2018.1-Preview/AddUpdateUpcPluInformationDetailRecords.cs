@@ -161,19 +161,11 @@ namespace WUMEI.Models.V2018
         /// <remarks>
         /// Contains UPC/PLU indicator, UPC/PLU and UPC/PLU check digit
         /// </remarks>
-        [Required, StringLength(17)]
-        [RegularExpression(CustomRegex.Num)]
-        public string UpcPluData { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of significant digits in the UPC or PLU
-        /// </summary>
         [Required]
-        [Range(typeof(byte), "0", "15")]
-        public byte UpcPluDataLength { get; set; }
+        public UpcPluObject UpcPluData { get; set; }
 
         /// <summary>
-        /// Gets or sets a constructed data element containing elements repetaed for each
+        /// Gets or sets a constructed data element containing elements repeated for each
         /// UPC/PLU data data element where an NTE price is provided.
         /// </summary>
         [Required]

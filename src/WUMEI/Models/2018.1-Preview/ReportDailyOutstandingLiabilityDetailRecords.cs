@@ -22,7 +22,7 @@ namespace WUMEI.Models.V2018
         /// File cutoff date and time, in GMT.
         /// </remarks>
         [Required]
-        public DateTime TransmissionDateTime { get; set; }
+        public virtual DateTime TransmissionDateTime { get; set; }
 
         /// <summary>
         /// Gets or sets a constructed data element containing elements that are repeated for each current and future

@@ -43,18 +43,7 @@ namespace WUMEI.Models.V2018
         /// Contains UPC/PLU indicator, UPC/PLU and UPC/PLU check digit.
         /// Required if the Card number, WIC MIS account ID, and WIC MIS WIC vendor ID filters are not present.
         /// </remarks>
-        [StringLength(17)]
-        [RegularExpression(CustomRegex.Num)]
-        public string UpcPluData { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value to indicate the number of significant digits in the UPC or PLU
-        /// </summary>
-        /// <remarks>
-        /// Required if UPC/PLU data is present.
-        /// </remarks>
-        [Range(typeof(byte), "0", "15")]
-        public byte UpcPluDataLength { get; set; }
+        public UpcPluObject UpcPluData { get; set; }
 
         /// <summary>
         /// Gets or sets a value assigned by the WIC MIS to identify an account for a WIC participant, economic unit or household.
