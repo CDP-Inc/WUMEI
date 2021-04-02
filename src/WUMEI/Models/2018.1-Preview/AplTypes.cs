@@ -3,7 +3,7 @@
 namespace WUMEI.Models.V2018
 {
     /// <summary>
-    /// Contains the APL type data element that is repeated for each UPC/PLU Data data element.
+    /// Contains the APL type data element that is repeated for each UPC/PLU Data element.
     /// </summary>
     public class AplTypes
     {

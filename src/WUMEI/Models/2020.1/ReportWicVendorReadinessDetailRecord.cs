@@ -34,6 +34,6 @@ namespace WUMEI.Models.V2020
         [Required]
         [StringLength(12)]
         [RegularExpression(CustomRegex.AbcNum)]
-        public string WicVendorMisVendorId { get; set; }
+        public string WicMisWicVendorId { get; set; }
     }
 }

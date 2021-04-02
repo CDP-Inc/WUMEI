@@ -13,6 +13,6 @@ namespace WUMEI.Models.V2020
         /// Gets or sets the data from the batch file header
         /// </summary>
         [Required]
-        public new BatchHeader BatchHeader { get; set; }
+        public new BatchHeader Header { get; set; }
     }
 }

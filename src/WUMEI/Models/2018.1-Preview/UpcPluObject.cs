@@ -35,6 +35,6 @@ namespace WUMEI.Models.V2018
         /// </summary>
         [Required]
         [Range(typeof(byte), "2", "16")]
-        public byte? UpcPluDataLength { get; set; }
+        public byte? UpcPluLength { get; set; }
     }
 }

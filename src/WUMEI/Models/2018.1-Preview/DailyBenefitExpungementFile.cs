@@ -12,7 +12,7 @@ namespace WUMEI.Models.V2018
         /// Gets or sets the data from the batch file header
         /// </summary>
         [Required]
-        public BatchHeader BatchHeader { get; set; }
+        public BatchHeader Header { get; set; }
 
         /// <summary>
         /// Gets or sets a list containing the benefit expungement records contained within the data file

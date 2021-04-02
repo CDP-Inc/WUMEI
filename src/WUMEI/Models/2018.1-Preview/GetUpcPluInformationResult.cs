@@ -79,11 +79,11 @@ namespace WUMEI.Models.V2018
         /// GMT in accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime BeginUpcPluData { get; set; }
+        public DateTime BeginUpcPluDate { get; set; }
 
         /// <summary>
         /// Gets or sets the last date for which the Category code
-        /// shall be used expressed in GMT in 
+        /// shall be used expressed in GMT in
         /// accordance with ISO 8601.
         /// </summary>
         [Required]
@@ -91,7 +91,7 @@ namespace WUMEI.Models.V2018
 
         /// <summary>
         /// Gets or sets the last date for which the Sub-Category
-        /// code shall be used expressed in GMT in 
+        /// code shall be used expressed in GMT in
         /// accordance with ISO 8601.
         /// </summary>
         [Required]
@@ -102,7 +102,7 @@ namespace WUMEI.Models.V2018
         /// accordance with ISO 8601.
         /// </summary>
         [Required]
-        public DateTime EndUpcPluData { get; set; }
+        public DateTime EndUpcPluDate { get; set; }
 
         /// <summary>
         /// Gets or sets a name for a WIC food item.
@@ -168,7 +168,7 @@ namespace WUMEI.Models.V2018
         public byte RebateFlag { get; set; }
 
         /// <summary>
-        /// Gets or sets a code further identifying the type of product within a Category code 
+        /// Gets or sets a code further identifying the type of product within a Category code
         /// as defined in the National UPC database.
         /// </summary>
         [Required, StringLength(3)]

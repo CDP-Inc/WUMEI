@@ -24,7 +24,7 @@ namespace WUMEI.Models.V2020
         /// Gets or sets the number of iterations of APL type in the UPC/PLU record.
         /// </summary>
         [JsonIgnore]
-        public override short NumberOfAplTypes { get; set; }
+        public override short NumberAplTypes { get; set; }
 
         /// <summary>
         /// Gets or sets the number of iterations of WIC Vendor peer groups and NTE prices for those groups.
@@ -33,20 +33,6 @@ namespace WUMEI.Models.V2020
         /// Identifies how many WIC Vendor peer group IDs are included in the repeating section below.
         /// </remarks>
         [JsonIgnore]
-        public override byte NumberOfWicVendorPeerGroups { get; set; }
-
-        /// <summary>
-        /// Gets or sets a constructed data element containing elements repeated for each UPC/PLU data element where an
-        /// NTE price is provided.
-        /// </summary>
-        [JsonIgnore]
-        public override IEnumerable<V2018.NtePriceAndWicVendorPeerGroupId> NtePriceWicVendorPeerGroupId { get; set; }
-
-        /// <summary>
-        /// Gets or sets a constructed data element containing elements repeated for each UPC/PLU data element where an
-        /// NTE price is provided.
-        /// </summary>
-        [Required]
-        public IEnumerable<V2018.NtePriceAndWicVendorPeerGroupId> NteData { get; set; }
+        public override byte NumberWicVendorPeerGroups { get; set; }
     }
 }

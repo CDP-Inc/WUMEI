@@ -38,7 +38,7 @@ namespace WUMEI.Models.V2018
         [Required]
         [StringLength(3, MinimumLength = 3)]
         [RegularExpression(CustomRegex.Num)]
-        public string SubcategoryCode { get; set; }
+        public virtual string SubcategoryCode { get; set; }
 
         /// <summary>
         /// Gets or sets long description of the Sub-Category code suitable for printing or displaying

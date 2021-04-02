@@ -12,12 +12,12 @@ namespace WUMEI.Models.V2018
         /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
-        public BatchHeader BatchHeader { get; set; }
+        public BatchHeader Header { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of Detail Records for the Report WIC Benefit Changes method.
         /// </summary>
         [Required]
-        public IEnumerable<ReportWicBenefitChangesDetailRecords> DetailRecords { get; set; }
+        public IEnumerable<ReportWicBenefitChangesDetailRecords> Records { get; set; }
     }
 }

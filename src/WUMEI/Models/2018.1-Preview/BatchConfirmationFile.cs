@@ -12,12 +12,12 @@ namespace WUMEI.Models.V2018
         /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
-        public BatchConfirmationHeader BatchConfirmationHeader { get; set; }
+        public BatchConfirmationHeader Header { get; set; }
 
         /// <summary>
         /// Gets or sets data elements for the Batch Confirmation File detail record.
         /// </summary>
         [Required]
-        public IEnumerable<BatchConfirmationDetailRecord> DetailRecords { get; set; }
+        public IEnumerable<BatchConfirmationDetailRecord> Records { get; set; }
     }
 }

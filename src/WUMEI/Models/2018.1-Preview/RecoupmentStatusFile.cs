@@ -11,12 +11,12 @@ namespace WUMEI.Models.V2018
         /// <summary>
         /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
-        public BatchHeader BatchHeader { get; set; }
+        public BatchHeader Header { get; set; }
 
         /// <summary>
         /// Gets or sets a list containing the recoupment status records.
         /// </summary>
         [Required]
-        public IEnumerable<RecoupmentStatusRecord> DetailRecords { get; set; }
+        public IEnumerable<RecoupmentStatusRecord> Records { get; set; }
     }
 }

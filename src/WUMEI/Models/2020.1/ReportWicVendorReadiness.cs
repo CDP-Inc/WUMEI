@@ -15,12 +15,12 @@ namespace WUMEI.Models.V2020
         /// Gets or sets a constructed data element containing details about the service call and caller.
         /// </summary>
         [Required]
-        public BatchHeader BatchHeader { get; set; }
+        public BatchHeader Header { get; set; }
 
         /// <summary>
         /// Collection of Detail Records for the Report WIC Vendor Readiness Batch.
         /// </summary>
         [Required]
-        public IEnumerable<ReportWicVendorReadinessDetailRecord> DetailRecords { get; set; }
+        public IEnumerable<ReportWicVendorReadinessDetailRecord> Records { get; set; }
     }
 }

@@ -45,13 +45,6 @@ namespace WUMEI.Models.V2018
         public int ClinicId { get; set; }
 
         /// <summary>
-        /// Gets or sets date and time the originator of the function sends the message or batch expressed in GMT in
-        /// accordance with ISO 8601.
-        /// </summary>
-        [Required]
-        public DateTime TransmissionDateTime { get; set; }
-
-        /// <summary>
         /// Gets or sets n identifier assigned to a WIC MIS user that is used to track activity in the system.
         /// </summary>
         /// <remarks>
@@ -121,6 +114,6 @@ namespace WUMEI.Models.V2018
         /// Gets or sets a data object containing elements that are repeated for each WIC MIS account ID.
         /// </summary>
         [Required]
-        public IEnumerable<BenefitBalance> BenefitBalance { get; set; }
+        public IEnumerable<BenefitBalance> BenefitDetails { get; set; }
     }
 }

@@ -58,7 +58,7 @@ namespace WUMEI.Models.V2018
         /// Required if a future date is to be used.
         /// </remarks>
         [RegularExpression(CustomRegex.StandardDate)]
-        public string BeginUpcPluData { get; set; }
+        public string BeginUpcPluDate { get; set; }
 
         /// <summary>
         /// Gets or sets the last date for which the UPC/PLU data shall be used expressed in GMT in
@@ -68,7 +68,7 @@ namespace WUMEI.Models.V2018
         /// Required if a future date is to be used.
         /// </remarks>
         [RegularExpression(CustomRegex.StandardDate)]
-        public string EndUpcPluData { get; set; }
+        public string EndUpcPluDate { get; set; }
 
         /// <summary>
         /// Gets or sets a name for a WIC food item.
@@ -99,7 +99,7 @@ namespace WUMEI.Models.V2018
         /// Gets or sets the number of iterations of APL type in the UPC/PLU record.
         /// </summary>
         [Range(typeof(short), "0", "9999")]
-        public virtual short NumberOfAplTypes { get; set; }
+        public virtual short NumberAplTypes { get; set; }
 
         /// <summary>
         /// Gets or sets the number of iterations of WIC Vendor peer groups and NTE prices for those groups.
@@ -109,7 +109,7 @@ namespace WUMEI.Models.V2018
         /// </remarks>
         [Required]
         [Range(typeof(byte), "0", "99")]
-        public virtual byte NumberOfWicVendorPeerGroups { get; set; }
+        public virtual byte NumberWicVendorPeerGroups { get; set; }
 
         /// <summary>
         /// Gets or sets the size of the contents of the package quantified in the standard benefit units of measure.
@@ -147,7 +147,7 @@ namespace WUMEI.Models.V2018
         public byte RebateFlag { get; set; }
 
         /// <summary>
-        /// Gets or sets a code further identifying the type of product within a Category code 
+        /// Gets or sets a code further identifying the type of product within a Category code
         /// as defined in the National UPC database.
         /// </summary>
         [Required, StringLength(3)]
@@ -166,15 +166,15 @@ namespace WUMEI.Models.V2018
 
         /// <summary>
         /// Gets or sets a constructed data element containing elements repeated for each
-        /// UPC/PLU data data element where an NTE price is provided.
+        /// UPC/PLU data element where an NTE price is provided.
         /// </summary>
         [Required]
-        public virtual IEnumerable<NtePriceAndWicVendorPeerGroupId> NtePriceWicVendorPeerGroupId { get; set; }
+        public virtual IEnumerable<NtePriceAndWicVendorPeerGroupId> NtePriceData { get; set; }
 
         /// <summary>
         /// Gets or sets the type of APL That is assigned to a vendor and contains only products that
-        /// are assigned to the APL type. Is repeated for each UPC/PLU data data element.
+        /// are assigned to the APL type. Is repeated for each UPC/PLU data element.
         /// </summary>
-        public IEnumerable<AplTypes> AplTypes { get; set; }
+        public IEnumerable<AplTypes> AplTypeData { get; set; }
     }
 }

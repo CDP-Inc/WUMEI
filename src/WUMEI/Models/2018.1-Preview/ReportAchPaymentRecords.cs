@@ -134,6 +134,6 @@ namespace WUMEI.Models.V2018
         [Required]
         [StringLength(12)]
         [RegularExpression(CustomRegex.AbcNum)]
-        public string WicMisWicVendorId { get; set; }
+        public string WicMisVendorId { get; set; }
     }
 }
