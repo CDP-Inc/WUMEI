@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -81,7 +82,7 @@ namespace WUMEI
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc();
+            //app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(
                 options =>
