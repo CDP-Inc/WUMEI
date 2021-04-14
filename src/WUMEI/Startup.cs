@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.IO;
 using System.Linq;
@@ -67,7 +65,7 @@ namespace WUMEI
                     options.CustomSchemaIds(t => t.FullName);
                 }
             );
-            //services.AddSwaggerGenNewtonsoftSupport();
+            services.AddSwaggerGenNewtonsoftSupport();
         }
 
         /// <summary>
